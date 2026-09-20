@@ -61,6 +61,16 @@ extra_css:
 extra_javascript:
   - javascripts/lightbox.js
 
+# 下面这四个 .md 不在 nav 里，但 MkDocs 默认仍会把它们构建成 HTML，任何人都能直接访问到。
+# 排除掉：前三个是内部用的（维护流程里含给 AI 的提示词、空白模板、本地预览说明），
+# 最后一个和 systems/task-system.md 内容重复。
+# 用配置排除而不是移出 docs/ ——「打开网页.md」是给不装工具的同事看的说明，留在原地更好找。
+exclude_docs: |
+  _template.md
+  文档维护说明.md
+  打开网页.md
+  ui/task-system.md
+
 nav:
   - 首页: index.md
   - 快速入门:
