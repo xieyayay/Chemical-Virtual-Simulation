@@ -595,6 +595,81 @@ LumenScreenProbeGather / LumenReflections / UpdateLumenSceneBuffers
 
 ---
 
+### Step 22 · 分区调色（2026-11-10 12:30:48）
+
+在真实档基础上加胶片式分区响应，幅度 2–6%：
+
+| 参数 | 值 | 意图 |
+|---|---|---|
+| `ColorSaturationShadows` | (1.06, 1.06, 1.06) | 暗部饱和 +6% |
+| `ColorSaturationHighlights` | (0.96, 0.96, 0.96) | 高光饱和 −4% |
+| `ColorContrastShadows` | (1.05, 1.05, 1.05) | 暗部对比 +5% |
+| `ColorContrastHighlights` | (0.98, 0.98, 0.98) | 高光柔化 |
+| `ColorGainShadows` | (0.98, 0.99, 1.02) | 暗部偏冷 |
+| `ColorGainHighlights` | (1.02, 1.00, 0.98) | 高光偏暖 |
+
+分区范围未改（`ShadowsMax=0.09` / `HighlightsMin=0.5`）。
+
+### Step 23 · 玻璃光照模式（2026-11-10 12:31:03）
+
+`M_Opt_Glass` 的 `TranslucencyLightingMode`：`TLM_SURFACE` → **`TLM_VOLUMETRIC_DIRECTIONAL`**。
+省掉 profViz 里看到的 `TranslucencyLightingVolume` 逐像素查找。
+
+### Step 24 · 清理未使用材质（2026-11-10 16:0x）
+
+删除 **14 个**无引用资产：
+
+```
+M_Opt_Liquid / M_Opt_Surface / M_Opt_Surface_Tex
+MI_Opt_Tex_Labset
+MI_Opt_blue1 / blue2 / glass2 / gray5 / gray7 / green1 / green3
+MI_Opt_jingshixian / pink / pink1
+```
+
+`_Opt` 剩余 26 个（3 个母材质 + 23 个实例）。
+
+**重要发现**：`find_package_referencers_for_asset` 对已保存关卡的引用**有延迟**，`MI_Opt_Marble_White` 被误报为无引用（实际挂在 `shiyantai2` 上）。**删除前必须额外核对场景实际使用**。
+
+### Step 25 · 体积雾排查（2026-11-10 16:20–17:00）★ 三个结论
+
+#### 结论 1：旧的 ExponentialHeightFog 数据损坏
+
+现象：所有参数读出来都正确（密度、颜色、`EnableVolumetricFog`、位置），但画面**完全无雾**。
+
+**决定性判定法**：把 `FogDensity` 设成 **0.1**（1 米内完全遮挡的极端值）。
+- 画面变化 → 组件正常，只是参数太稀
+- **画面纹丝不动 → 组件没进渲染管线，已损坏，必须删除重建**
+
+本项目就是后者。删除旧 Actor、`spawn_actor_from_class(unreal.ExponentialHeightFog, ...)` 重建后立即正常。
+
+#### 结论 2：体积雾不适合这个场景
+
+用户实测：**关掉体积雾反而有雾感**（普通指数雾生效），**打开体积雾反而变干净**。
+
+技术原因：
+- 普通雾的颜色来自 `FogInscatteringLuminance`（固定值）
+- 体积雾改用「3D 网格 + 灯光散射」，**不再使用那个固定颜色**
+- 灯光照不到的地方，体积雾几乎不显示 → 画面变干净
+
+光柱亮度 = `灯照度 × VolumetricScatteringIntensity`。30 米大空间 + 800 cd 灯，5 米外就衰减到看不见。
+
+**体积雾的适用条件是「小空间 + 单点强光 + 明显遮挡」**（如光束穿过百叶窗），不适用于均匀多灯的大房间。
+
+#### 结论 3：普通指数雾是性价比最高的空气感方案
+
+零开销、不受灯光影响、远处自然衰减。最终配置：
+
+```
+Enable Volumetric Fog = False
+FogDensity            = 0.0008
+FogHeightFalloff      = 0.12
+FogInscatteringLuminance = (0.52, 0.58, 0.70)
+FogMaxOpacity         = 0.85
+13 盏灯的 VolumetricScatteringIntensity = 0.15
+```
+
+---
+
 ## 附录 A · 通过 RemoteControl API 控制编辑器（已打通，可复用）
 
 ### A.1 一次性配置
