@@ -385,6 +385,287 @@ chrome  base=(0.9200,0.9200,0.9300)  R=0.120
 
 ---
 
+### Step 14 · Local Exposure（2026-11-10 10:01:25）
+
+| 参数 | 默认 | 设定 |
+|---|---|---|
+| `LocalExposureHighlightContrastScale` | 1.0 | **1.25** |
+| `LocalExposureShadowContrastScale` | 1.0 | **1.25** |
+| `LocalExposureDetailStrength` | 1.0 | **0.70** |
+| `LocalExposureMiddleGreyBias` | 0.0 | 0.0 |
+
+用户反馈"感受不大"，故后续在 Step 15 整体关闭。
+
+### Step 15 · 真实/自然档（2026-11-10 10:29:48 + 10:30:32）
+
+**调研结论（如实记录）**：公开网络上**不存在**权威的"UE5 真实感后处理数值模板"。
+
+核实过的三类来源：
+- Epic 官方 [Post Process Effects](https://dev.epicgames.com/documentation/en-us/unreal-engine/post-process-effects-in-unreal-engine?application_version=5.7) —— 只有参数定义与默认值，无推荐组合
+- [Game-Ace 电影级制作指南](https://game-ace.com/blog/unlocking-cinematic-quality-in-unreal-engine-5-6/) —— 只有方法论（bloom 别太强 / 颗粒要轻 / 暗角色散要克制），无具体数字
+- 各类教程/论坛 —— 个人偏好，互相矛盾
+
+**因此这套值是依据「引擎默认值 + 摄影原理」推导的，不是抄来的。**
+核心原则：**"真实"靠少干预。后处理参数越多越强，画面越假。**
+
+| 参数 | 改前 | 真实档 | 依据 |
+|---|---|---|---|
+| `BloomIntensity` | 0.45 | **0.30** | 真实镜头只在极亮处溢光 |
+| `BloomThreshold` | 0.90 | **1.00** | 挡住中高光参与泛光 |
+| `VignetteIntensity` | 0.35 | **0.15** | 真实视角几乎无暗角 |
+| `FilmGrainIntensity` | 0.02 | **0.01** | 仅用于打散数字洁净感 |
+| `SceneFringeIntensity` | 0.18 | **0.00** | 真实相机无明显色散 |
+| `Sharpen` | 0.45 | **0.20** | 过头产生白边，反而不真实 |
+| `ColorContrast` | 1.08 | **1.02** | 只留一点 |
+| `ColorSaturation` | 用户手调 | **保留用户值** | 见下 |
+| `MotionBlurAmount` | 0 | 0 | 保持关闭 |
+| `LocalExposure*`（三项） | override 开 | **override 全关** | 真实相机没有局部动态压缩 |
+| `WhiteTemp / WhiteTint` | override 关 | override 关 | 保持 6500 中性 |
+
+保留不动：`BloomMethod = SOG`、`FilmSlope/Toe/Shoulder = 0.88 / 0.55 / 0.26`（Epic 调过的电影曲线）。
+
+#### 教训：写参数前必须先读现值
+
+应用真实档时读到的 `ColorSaturation` 是 **`(0.752475, 0.760000, 0.752475)`** —— 用户自己调过的（我上次设的是 0.90）。真实档要写 `1.0`，等于把用户降下去的饱和又拉回来。
+
+已恢复用户值。`Sharpen` 同样：我设 0.45，用户调到 0.70，真实档改成 0.20 会变软。
+
+**规则：任何批量参数脚本，写之前先把当前值打印出来并判断是否已被用户手动修改过；发现用户改动，保留而不是覆盖。**
+
+---
+
+### Step 16 · 阶段二：反射 / AO / 接触阴影（2026-11-10 10:39:59）
+
+**A. `Config/DefaultEngine.ini` 追加（需重启生效）**
+
+```ini
+r.ContactShadows=1
+r.Lumen.Reflections.Quality=1
+r.Lumen.Reflections.MaxRoughnessToTrace=0.5   ; 默认 0.4，让更多粗糙材质也参与反射
+r.SSR.Quality=4
+r.AOQuality=2
+r.Streaming.PoolSize=3000
+```
+
+备份：`DefaultEngine.ini.bak_before_reflect`
+
+**B. 灯级 `ContactShadowLength`（立即生效）**
+
+13 盏灯全部设 `contact_shadow_length = 0.03`（3 cm）。Mobility 实测：DirectionalLight 与 SpotLight3 为 `MOVABLE`，其余 11 盏为 `STATIONARY`，均支持接触阴影。
+
+只改这一个属性，**未触碰用户手动调整过的强度与色温**。
+
+关卡大小 4,052,671 B。
+
+**预期**：柜脚、凳脚、器材底部与地面/台面交界处出现一条紧贴的暗线，物体不再"浮"在表面上。
+
+---
+
+### Step 17 · 阴影距离与分辨率（2026-11-10 10:47:55）
+
+用户反馈"阴影质量看不出效果"。查出关键漏项：**方向光的阴影覆盖距离**。
+
+| 参数 | 旧 | 新 | 说明 |
+|---|---|---|---|
+| `DynamicShadowDistanceMovableLight` | **20000** | **4000** | 房间纵深仅约 30m，用 200m 覆盖等于把精度摊薄 6.7 倍 |
+| `DistanceFieldShadowDistance` | 30000 | 4000 | 同上 |
+| `DynamicShadowCascades` | 4 | 3 | |
+| 局部光 `ShadowResolutionScale` | 1.0 | 1.5 | 12 盏 |
+
+**结论**：方向光阴影距离对室内清晰度的影响，比采样数大一个数量级。
+
+### Step 18 · 关闭 VSM，改用传统 Shadow Map（2026-11-10 10:59:34）
+
+用户对比后选择"硬边清晰"的视觉风格。
+
+**ini 变更**
+
+```ini
+r.Shadow.Virtual.Enable=0            ; 两处都改（RendererSettings + SystemSettings）
+r.Shadow.MaxResolution=4096
+r.Shadow.MaxCSMResolution=4096
+r.Shadow.CSM.MaxCascades=3
+r.Shadow.RadiusThreshold=0.01
+r.AllowStaticLighting=False           ; 关键：消除"未构建光照"检查
+r.Shadow.MaxSoftKernelSize=24         ; 给硬边加羽化
+```
+
+**灯属性变更**：13 盏全部 `Stationary → Movable`（DirectionalLight 与 SpotLight3 原本就是 Movable）。
+
+#### 问题：切换后出现「光照需要重建（735 未构建对象）」+ 视口打印 `Preview`
+
+**根因**：11 盏灯是 `Stationary`，需要 Lightmap 预计算。VSM 开启时引擎用虚拟阴影实时补偿，所以看不出来；**VSM 一关，预计算缺失，引擎退化成 Preview 模式**。
+
+**解决**：两件事一起做才彻底 ——
+1. `r.AllowStaticLighting=False`（项目级关闭静态光照，引擎根本不做"未构建"判定）
+2. 所有灯 `Mobility → Movable`（Stationary 灯的间接光依赖预计算，残留隐患）
+
+**教训**：**在 Lumen 项目里不该有 Stationary 灯**。Lumen 是全动态 GI，Stationary 只会带来 Lightmap 依赖和这类告警。
+
+### Step 19 · 性能优化第一轮（2026-11-10 11:09:48）★ 有翻车
+
+用户反馈"帧率偏低"。按配置推算阴影负载：
+
+```
+4096² × 13 盏 × 1.5² ≈ 4.9 亿像素/帧
+```
+
+| 动作 | 结果 |
+|---|---|
+| `MaxResolution` 4096 → 2048 | |
+| `MaxCSMResolution` 4096 → 2048 | |
+| `MaxSoftKernelSize` 24 → 12 | |
+| `SSR.Quality` 4 → 2 | |
+| `AOQuality` 2 → 1 | |
+| `Lumen.Reflections.MaxRoughnessToTrace` 0.5 → 0.4 | |
+| 12 盏局部光 `ShadowResolutionScale` 1.5 → 1.0 | |
+| **RectLight ×5 `cast_shadows` → False** | **翻车点** |
+
+#### 翻车：阴影几乎全部消失
+
+**根因是三处叠加**：
+1. `MaxSoftKernelSize=12` —— 软阴影核 12 像素，中小物体阴影被彻底抹掉（主因）
+2. `RectLight ×5` 关投影 —— 面光提供的大范围柔和环境阴影全没了
+3. `MaxResolution 2048` —— 边缘粗糙但不至于消失
+
+**修复**：`MaxSoftKernelSize → 0`、`RadiusThreshold → 0.03`、`MaxResolution → 3072`，RectLight 投影由用户手动恢复。
+
+**教训**：**`MaxSoftKernelSize` 是"让阴影消失"的隐形杀手**。它按像素扩散，在低分辨率下会把小阴影完全糊掉。室内场景应该用 0–4。
+
+### Step 20 · 基于 ProfileVisualizer 数据的第二轮优化（2026-11-10 12:02:13）
+
+用户提供了 `.profViz` 采集文件。二进制格式无法完整逆向（见附录），但**事件名全部提取成功（195 个）**，据此定位真实开销：
+
+```
+Nanite Cubemap UEDPIE_0_Start.RectLight   1536x1536   ← 面光 6 面立方体阴影
+Nanite Cubemap UEDPIE_0_Start.RectLight2   768x768
+Nanite Cubemap UEDPIE_0_Start.RectLight3-5 384x384
+WholeScene split0 / split1 / split2       2040x2040   ← 方向光 CSM 3 级
+WholeScene MovablePrimitives              多种尺寸     ← 每盏可移动灯
+VolumetricCloud / VolCloudComposeOverScene            ← 室内体积云
+TranslucencyLightingVolume / FilterTranslucentVolume 64x64x64 Cascades:2
+GPUSkinCache_UpdateSkinningBatches + SKM_Quinn 4.6 万顶点
+NiagaraGpuComputeDispatch
+Nanite::Streaming / Readback / VisBuffer / BasePass
+LumenScreenProbeGather / LumenReflections / UpdateLumenSceneBuffers
+```
+
+**依此执行的优化**：
+
+| 动作 | 依据 |
+|---|---|
+| `DirectionalLight.cast_shadows → False` | CSM 3×2040² ≈ 1250 万像素，室内无意义 |
+| `RectLight ×5.cast_shadows → False` | 5 盏 × 6 面立方体贴图 ≈ 1900 万像素 |
+| 12 盏局部光 `ShadowResolutionScale → 0.5` | 阴影贴图面积 −75% |
+| `VolumetricCloud` 隐藏 + `cast_cloud_shadows=False` | 室内不需要 |
+| `MaxResolution 3072 → 2048`、`MaxCSMResolution 2048 → 1024` | |
+
+预计阴影负载：**3000 万 → 340 万像素/帧（−88%）**。
+
+关卡大小 4,052,134 B。
+
+**profViz 里另外三条待办线索**（等 `stat unit` 数据决定是否动）：
+- GPU 蒙皮（SKM_Quinn 4.6 万顶点/帧）
+- Niagara GPU 粒子
+- `TranslucencyLightingVolume`：30 个玻璃槽的 `TLM_SURFACE` 开销
+
+---
+
+### Step 21 · 还原 Step 20 的投影改动（2026-11-10 12:10:36）
+
+用户反馈"现在的效果很差"，要求：**除 VolumetricCloud 与 12 盏局部光的 ShadowResolutionScale 外，其余全部还原**。
+
+| 项 | 处理 |
+|---|---|
+| `DirectionalLight.cast_shadows` | False → **True（还原）** |
+| `RectLight ×5.cast_shadows` | False → **True（还原）** |
+| `r.Shadow.MaxResolution` | 2048 → **3072（还原）** |
+| `r.Shadow.MaxCSMResolution` | 1024 → **2048（还原）** |
+| 12 盏局部光 `ShadowResolutionScale` | **0.5（保留）** |
+| `VolumetricCloud` | **保持隐藏 + 关投影（保留）** |
+
+关卡大小 4,051,964 B。用户确认"现在没什么问题"。
+
+#### 复盘：为什么关方向光/面光投影会让效果变差
+
+方向光 250 lux 虽然强度不高，但它提供**整个空间的顶光基底**；关掉后只剩筒灯的局部照明，明暗关系塌陷。
+面光的柔和包裹阴影同理——它不是"多余的光"，而是让物体与桌面产生接触关系的来源。
+
+**教训：优化性能时，不能按"这盏灯看起来不亮"来判断是否该关它的投影**。投影的作用是建立空间关系，不是照明强度。
+
+---
+
+## 附录 A · 通过 RemoteControl API 控制编辑器（已打通，可复用）
+
+### A.1 一次性配置
+
+**1. `aa.uproject` 启用两个插件**
+
+```json
+{ "Name": "RemoteControl", "Enabled": true },
+{ "Name": "RemoteControlWebInterface", "Enabled": true }
+```
+
+**2. 创建 `Config/DefaultRemoteControl.ini`**
+
+```ini
+[/Script/RemoteControlCommon.RemoteControlSettings]
+bRestrictServerAccess=False
+bEnableRemotePythonExecution=True
+bAllowConsoleCommandRemoteExecution=True
+AllowedOrigin=*
+bAutoStartWebServer=True
+bAutoStartWebSocketServer=True
+RemoteControlHttpServerPort=30010
+RemoteControlWebInterfacePort=30000
+```
+
+**三个容易搞错的地方**（都踩过）：
+- 类定义是 `UCLASS(config = RemoteControl)` → 文件必须是 **`DefaultRemoteControl.ini`**，不是 `DefaultEngine.ini`
+- 模块名是 `RemoteControlCommon`，段名是 **`[/Script/RemoteControlCommon.RemoteControlSettings]`**
+- 属性名是 **`bAllowConsoleCommandRemoteExecution`**（不是 `bAllowConsoleCommand`）
+
+**3. 启动编辑器**
+
+```
+UnrealEditor.exe "aa.uproject" /Game/Start -RCWebControlEnable -RCWebInterfaceEnable
+```
+
+端口 30010，约 9–24 秒就绪。
+
+### A.2 调用方式
+
+```powershell
+# 执行任意 Python（最强，能做任何事）
+$b = @{
+  objectPath = "/Script/PythonScriptPlugin.Default__PythonScriptLibrary"
+  functionName = "ExecutePythonCommand"
+  parameters = @{ PythonCommand = "import unreal; unreal.log('ok')" }
+} | ConvertTo-Json -Depth 8
+Invoke-RestMethod -Uri "http://127.0.0.1:30010/remote/object/call" -Method Put -Body $b -ContentType "application/json"
+
+# 读/写任意属性
+Invoke-RestMethod -Uri "http://127.0.0.1:30010/remote/object/property" -Method Put ...
+
+# 可用端点：/remote/object/call、/property、/describe、/batch、/preset/:preset/function/:fn
+```
+
+**已知限制**：
+- `get_pie_world()` / `GameplayStatics.get_game_world()` 在 5.7 Python 里**不存在**，PIE 世界拿不到
+- **编辑器视口不在前台时引擎降频**，`ProfileGPU` 只记录到 `SlateWidgetRender`（0.5ms），场景 pass 为空 —— 所以 headless / 后台采集不到有效 GPU 数据
+- `-run=pythonscript` 即使不加 `-nullrhi` 也是 **Null RHI**（日志 `verbatimrhiname="Null"`），无 GPU
+
+### A.3 `.profViz` 格式（未能完整逆向）
+
+路径：`%LOCALAPPDATA%\UnrealEngine\5.7\Saved\Logs\profileViz\`
+
+二进制流，每个节点大致是「3 个 double + uint32 childCount + uint32 nameLen + name」，但**名称长度非 4 字节对齐导致字段偏移逐节点漂移**，无法用固定步长线性扫描。
+
+**可用做法**：用正则 `[\x20-\x7e]{6,}` 提取全部事件名（本项目得到 195 个），事件名本身就足以定位开销来源。
+**不建议再投入**：完整逆向收益低，需要数值时直接让用户在 Output Log 看 `ProfileGPU` 的表格。
+
+---
+
 ## 3. 三次翻车的根因（务必不要重犯）
 
 ### 3.1 全场景灰蒙蒙
@@ -462,46 +743,74 @@ ScalarParameter "Specular"   ──► Specular
 
 ---
 
-## 5. 当前状态（截至 Step 3）
+## 5. 当前状态（截至 Step 20）
+
+### 5.1 材质
 
 | 项 | 状态 |
 |---|---|
-| 材质 | 86 槽已替换：white/white1（45）+ gray 系/black（41） |
-| 待替换 | `glass` 27、`glass3` 3、`MI_Glass_01a` 46、`red` 18、`green` 14、`red1` 6、`green2` 4、`blue` 2、彩色系若干 |
-| 灯光 | 13 盏全部物理照度（Step 3） |
-| 后处理 | **无 PPV**（原始状态） |
-| 雾 | 原始状态 |
-| 天光 | 原始状态（`SLS_SPECIFIED_CUBEMAP` + `RealTimeCapture` + `TX_Cubemap_01a`） |
-| Nanite | 未启用 |
+| 不透明材质 | **163 槽** PBR 化，父材质 `M_Opt_Surface_Var`（5 参数 + 世界坐标噪声调制粗糙度） |
+| 颜色来源 | **全部取自原材质真实值**（`get_material_default_vector_parameter_value`），零猜测 |
+| 玻璃 | **30 槽**（`glass` 27 + `glass3` 3），`M_Opt_Glass`，Fresnel 驱动 Opacity，`TLM_SURFACE` |
+| 金属 | `MI_Opt_chrome` 镀铬（BaseColor 0.92 / R 0.12 / Metallic 1.0），水龙头 6 槽 |
+| 粗糙度变化 | `RoughnessVar`：white 0.12 / white1 0.10 / 其余 0.08 |
+| 未替换 | `MI_Glass_01a` 46 槽（DekoClass 体系，假反射 cubemap）、各种哈希材质、`anquanchukou_mat` |
 
-## 6. 后续计划
+### 5.2 灯光
 
-- **Step 4**：玻璃组（`glass` 27 + `glass3` 3），半透明母材质，`Specular 0.532`（IOR 1.52），`Refraction 1.02`
-- **Step 5**：`MI_Glass_01a` 46 槽（DekoClass 体系，单独评估）
-- **Step 6**：彩色材质（red/green/blue，语义不明，需先确认哪些是液体）
-- **Step 7**：后处理体积（Bloom / 暗角 / 颗粒 / 色彩分级）—— 最后做，因为它是"调味"，不是"打底"
+| 项 | 状态 |
+|---|---|
+| 13 盏灯 | 物理照度（DirectionalLight 250 lux / SpotLight 1200 cd / PointLight 1600 cd / RectLight 2200 lm），**色温由用户手动微调** |
+| Mobility | **全部 Movable** |
+| 接触阴影 | `ContactShadowLength = 0.03` |
+| 投影状态 | DirectionalLight **关**、RectLight ×5 **关**、SpotLight ×7 + PointLight **开** |
+| 局部光阴影分辨率 | `ShadowResolutionScale = 0.5` |
+
+### 5.3 渲染与后处理
+
+| 项 | 状态 |
+|---|---|
+| VSM | **关闭**（`r.Shadow.Virtual.Enable=0`） |
+| 传统 Shadow Map | `MaxResolution=2048` / `MaxCSMResolution=1024` / `MaxSoftKernelSize=0` |
+| 静态光照 | `r.AllowStaticLighting=False` |
+| 方向光阴影距离 | 4000（原 20000） |
+| 后处理 | `PP_Opt`（unbound），**真实/自然档**：Bloom 0.30/阈值 1.0、暗角 0.15、颗粒 0.01、色散 0、锐化 0.20、对比 1.02、Local Exposure 关闭 |
+| Lumen | GI + Reflections，`MaxRoughnessToTrace=0.4` |
+| 其他 | `SSR.Quality=2`、`AOQuality=1`、`ContactShadows=1`、`Streaming.PoolSize=3000` |
+
+### 5.4 工程配置
+
+| 项 | 状态 |
+|---|---|
+| RemoteControl | **已启用**（`RemoteControl` + `RemoteControlWebInterface`），可 HTTP 远程执行 Python |
+| 编辑器启动 | 需带 `-RCWebControlEnable -RCWebInterfaceEnable`，端口 30010 |
 
 ---
 
-## 附：可用脚本
+## 6. 后续计划
 
-| 脚本 | 作用 |
+### 6.1 性能（等 `stat unit` 数据决定）
+
+| 优先级 | 项目 | 依据 |
+|---|---|---|
+| 高 | Lumen 反射（`r.Lumen.Reflections.Allow=0`） | 如果 GPU 仍是瓶颈，这是最大单项 |
+| 中 | GPU 蒙皮（SKM_Quinn 4.6 万顶点/帧） | profViz 有 `GPUSkinCache_UpdateSkinningBatches` |
+| 中 | Niagara GPU 粒子 | profViz 有 `NiagaraGpuComputeDispatch` |
+| 低 | 玻璃 `TLM_VOLUMETRIC` 替换 `TLM_SURFACE` | `TranslucencyLightingVolume` 64³ Cascades:2 |
+
+### 6.2 画质（用户决定是否继续）
+
+| 项目 | 说明 |
 |---|---|
-| `Saved/opt/step1_surface.py` | 重建纯参数母材质 + 替换 white 系 |
-| `Saved/opt/step2_gray_black.py` | 替换 gray/black 系 |
-| `Saved/opt/step3_lights.py` | 13 盏灯调物理照度 |
-| `Saved/opt/revert_to_baseline.py` | 材质还原 + 后处理最小化（排查用） |
-| `Saved/opt/adjust_exposure.py` | 曝光调整（当前未使用，PPV 不存在） |
+| 反射捕获球 | 场景当前 **0 个** `ReflectionCapture`，加 3–5 个可让金属/玻璃有正确环境反射 |
+| 表面贴图 | 项目内有现成 PBR 三通道（`TX_School_Floor_01a` / `TX_Wall_Plaster_01a` 等 ALB/NRM/RMA） |
+| Decal 贴花 | 地面污渍、台面划痕 |
+| 局部体积雾 | 窗户附近做丁达尔光柱 |
 
-执行方式（必须用正斜杠，反斜杠会被 UE 当转义）：
+### 6.3 已知未解决问题
 
-```powershell
-$env:OPT_APPLY="1"
-& "D:\UE\UE_5.7\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" `
-  "D:/UE5/Chemistry/aa 5.7/aa.uproject" `
-  -run=pythonscript `
-  "-script=D:/UE5/Chemistry/aa 5.7/Saved/opt/step4_glass.py" `
-  -EnablePlugins=PythonScriptPlugin -unattended -nosplash -nullrhi -stdout
-```
-
-执行前必须先关闭编辑器，否则两个实例会互相覆盖关卡文件。
+| 问题 | 状态 |
+|---|---|
+| 第一人称玻璃不反射角色 | 材质 `MI_Glass_01a` 用的是 cubemap 假反射，且屏幕空间反射无法反射屏外像素。**已确认放弃**（PlanarReflection 收益太低） |
+| 电热板外壳绿色 | 该颜色是原材质真实值（`green` = (0.018, 0.090, 0.038)），非误伤。若要改必须按 actor 单独指定 |
+| 粗糙度空间变化 | 用户反馈"像湿掉"后已从 0.60 降到 0.12 |

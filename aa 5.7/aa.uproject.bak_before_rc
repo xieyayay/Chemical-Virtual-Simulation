@@ -1,0 +1,81 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.7",
+	"Category": "",
+	"Description": "",
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		},
+		{
+			"Name": "CommonUI",
+			"Enabled": true
+		},
+		{
+			"Name": "RigLogic",
+			"Enabled": true
+		},
+		{
+			"Name": "LiveLinkControlRig",
+			"Enabled": true
+		},
+		{
+			"Name": "AppleARKitFaceSupport",
+			"Enabled": true,
+			"SupportedTargetPlatforms": [
+				"IOS",
+				"Win64",
+				"Mac",
+				"Linux",
+				"Android"
+			]
+		},
+		{
+			"Name": "RuntimeSvgSystem",
+			"Enabled": false
+		},
+		{
+			"Name": "SVGImporter",
+			"Enabled": true
+		},
+		{
+			"Name": "HairStrands",
+			"Enabled": true
+		},
+		{
+			"Name": "SkeletalMeshModelingTools",
+			"Enabled": true
+		},
+		{
+			"Name": "TextToSpeech",
+			"Enabled": true
+		},
+		{
+			"Name": "ThumbnailGenerator",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/content/43c213569ac94841b37d8bed1ab81ee5"
+		},
+		{
+			"Name": "ElectraPlayer",
+			"Enabled": true
+		},
+		{
+			"Name": "EasyBatchRenamer",
+			"Enabled": false,
+			"MarketplaceURL": "com.epicgames.launcher://ue/Fab/product/9eff1d0d-981b-4bfd-a324-2c1d926096e2"
+		},
+		{
+			"Name": "EasyCsv",
+			"Enabled": true,
+			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/b25b855096e74d088d7553ccbe4072f2"
+		},
+		{
+			"Name": "VaRest",
+			"Enabled": true
+		}
+	]
+}
