@@ -4,6 +4,22 @@
 *.bat text eol=crlf
 
 
-# 专门强制 MetaHuman 文件夹下的所有文件走 LFS，更保险
-aa 5.7/Content/MetaHumans/** filter=lfs diff=lfs merge=lfs -text
-aa 5.7/Content/Anim_character/** filter=lfs diff=lfs merge=lfs -text
+# ============================================================
+# Git LFS 规则
+# 写法两条铁律（就是你原来那两行失效的原因）：
+#   1) 本文件在 aa 5.7/ 子目录内，规则相对"本文件所在目录"解析，
+#      不要再写 "aa 5.7/" 前缀，否则变成 aa 5.7/aa 5.7/Content/... 永不命中；
+#   2) 路径里有空格必须用双引号整体包裹，否则 git 只取到空格前的片段当模式，
+#      剩下部分被当成属性名，报 "is not a valid attribute name"，规则等于没写。
+# 需要给带空格的目录加规则时这样写：
+#   "some dir with space/**" filter=lfs diff=lfs merge=lfs -text
+# ============================================================
+
+# 角色动画/序列目录里有单文件超过 GitHub 100MB 硬上限的资源（120.8MB 的 uasset），走 LFS
+Content/Anim_character/** filter=lfs diff=lfs merge=lfs -text
+
+# 说明：Content/MetaHumans/** 暂时保持普通 blob。
+# 该目录已按普通对象推送成功，单文件最大 73MB，未触 100MB 硬限；
+# 若整体转 LFS 需一次性重传约 2.3GB，超出 GitHub 免费 1GB 配额。
+# 以后该目录出现超限资源时，再加回下面这行并把超限文件单独转换：
+# Content/MetaHumans/** filter=lfs diff=lfs merge=lfs -text

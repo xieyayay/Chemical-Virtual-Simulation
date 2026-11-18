@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# .gitattributes 自身强制 LF：CRLF 会让每条规则的尾部带上 \r，
+# 导致 pattern 与实际路径对不上（LFS 规则会静默失效）。
+.gitattributes text eol=lf
