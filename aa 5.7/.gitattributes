@@ -2,3 +2,7 @@
 # 这条规则让 本地预览.cmd 无论在哪台机器、用什么 git 配置检出，都是 CRLF。
 *.cmd text eol=crlf
 *.bat text eol=crlf
+
+
+# 专门强制 MetaHuman 文件夹下的所有文件走 LFS，更保险
+aa 5.7/Content/MetaHumans/** filter=lfs diff=lfs merge=lfs -text
