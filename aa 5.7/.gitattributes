@@ -6,3 +6,4 @@
 
 # 专门强制 MetaHuman 文件夹下的所有文件走 LFS，更保险
 aa 5.7/Content/MetaHumans/** filter=lfs diff=lfs merge=lfs -text
+aa 5.7/Content/Anim_character/** filter=lfs diff=lfs merge=lfs -text
