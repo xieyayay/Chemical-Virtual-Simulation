@@ -73,8 +73,14 @@ exclude_docs: |
 
 nav:
   - 首页: index.md
+  - 复盘:
+      - 路线图: 复盘/路线图.md
+      - 写作规范: 复盘/写作规范.md
+      - 架构图: 复盘/架构图.md
   - 快速入门:
       - 项目概览: getting-started/project-overview.md
+  - 知识地图:
+      - 知识卡索引: kb/index.md
   - 关卡序列动画:
       - Level Sequence: animation/level-sequence.md
   - UI & Widget:
@@ -84,6 +90,7 @@ nav:
       - 通信与命名: blueprints/blueprint-notes.md
       - 可复用蓝图: blueprints/reusable-blueprints.md
   - 系统模块:
+      - 交互系统: systems/interaction-system.md
       - AI 对话系统: systems/ai-dialog.md
       - 任务系统: systems/task-system.md
       - 关卡流式加载: systems/level-streaming.md

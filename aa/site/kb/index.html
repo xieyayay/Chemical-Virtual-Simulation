@@ -1,0 +1,2206 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="基于UE5 5.4.4全蓝图的虚拟仿真化学实验教学软件">
+      
+      
+      
+      
+        <link rel="prev" href="../getting-started/project-overview/">
+      
+      
+        <link rel="next" href="../animation/level-sequence/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>知识卡索引 - aa · 技术文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+  
+  
+    
+      
+      
+      
+    
+  
+  
+  <style>:root{.md-tag{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3C%21--%20%40license%20lucide-static%20v0.545.0%20-%20ISC%20--%3E%20%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.75%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%20%3Cpath%20d%3D%22M12.586%202.586A2%202%200%200%200%2011.172%202H4a2%202%200%200%200-2%202v7.172a2%202%200%200%200%20.586%201.414l8.704%208.704a2.426%202.426%200%200%200%203.42%200l6.58-6.58a2.426%202.426%200%200%200%200-3.42z%22%20/%3E%20%3Ccircle%20cx%3D%227.5%22%20cy%3D%227.5%22%20r%3D%22.5%22%20fill%3D%22currentColor%22%20/%3E%20%3C/svg%3E');}}</style>
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../stylesheets/system.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/icons.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#知识地图" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="aa · 技术文档" class="md-header__button md-logo" aria-label="aa · 技术文档" data-md-component="logo">
+      
+  
+  <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" /> <path d="M6.453 15h11.094" /> <path d="M8.5 2h7" /> </svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aa · 技术文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              知识卡索引
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /> </svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /> </svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg>
+        
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /> </svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /> </svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="aa · 技术文档" class="md-nav__button md-logo" aria-label="aa · 技术文档" data-md-component="logo">
+      
+  
+  <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" /> <path d="M6.453 15h11.094" /> <path d="M8.5 2h7" /> </svg>
+
+    </a>
+    aa · 技术文档
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复盘
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    复盘
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%8D%E7%9B%98/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%8D%E7%9B%98/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    写作规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%8D%E7%9B%98/%E6%9E%B6%E6%9E%84%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    快速入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/project-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    知识地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识卡索引
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识卡索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#怎么用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-组--编程模型10-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A 组 · 编程模型（10 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-组--对象模型12-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B 组 · 对象模型（12 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-组--运行时框架12-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C 组 · 运行时框架（12 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-组--表现16-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D 组 · 表现（16 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-组--ui-与数据12-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E 组 · UI 与数据（12 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f-组--工程化8-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F 组 · 工程化（8 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#附录卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录卡
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#写作顺序建议" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写作顺序建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关卡序列动画
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    关卡序列动画
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../animation/level-sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI & Widget
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI & Widget
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/widget-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Widget 系统概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ui/widget-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 动画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    蓝图笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    蓝图笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blueprints/blueprint-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通信与命名
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blueprints/reusable-blueprints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可复用蓝图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统模块
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    系统模块
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systems/interaction-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交互系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systems/ai-dialog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 对话系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systems/task-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systems/level-streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关卡流式加载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    资源规范
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    资源规范
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assets/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三方插件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三方插件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../plugins/third-party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    插件说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设计系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#怎么用" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        怎么用
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-组--编程模型10-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A 组 · 编程模型（10 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b-组--对象模型12-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B 组 · 对象模型（12 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-组--运行时框架12-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C 组 · 运行时框架（12 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#d-组--表现16-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D 组 · 表现（16 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-组--ui-与数据12-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        E 组 · UI 与数据（12 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#f-组--工程化8-卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        F 组 · 工程化（8 卡）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#附录卡" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        附录卡
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#写作顺序建议" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        写作顺序建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="知识地图">知识地图<a class="headerlink" href="#知识地图" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>70 张卡，按「你接手时需要能回答的问题」组织。每张卡写一页，40–80 行，套 <code>docs/_template.md</code>。</p>
+</blockquote>
+<p><strong>状态</strong>：草稿　<strong>最后核对</strong>：2026-11-19　<strong>适用版本</strong>：UE 5.7.4</p>
+<h2 id="怎么用">怎么用<a class="headerlink" href="#怎么用" title="Permanent link">&para;</a></h2>
+<p><strong>不要按顺序背定义。</strong> 用法是：</p>
+<ol>
+<li>先读卡名与「必须能回答的问题」，圈出你现在答不上来的</li>
+<li>只写圈出来的那些卡</li>
+<li>每张卡写完，回到 <code>docs/复盘/路线图.md</code> 打勾</li>
+<li>每组的最后一张是「自测卡」，闭卷做一遍</li>
+</ol>
+<p>卡片格式统一为六段（见 <code>docs/复盘/写作规范.md</code>），其中第 3 段必须落到本项目资产。</p>
+<p><strong>出处约定</strong>：<code>〔O〕</code> 官方文档（链接末尾带 <code>?application_version=5.7</code> 才是 5.7 文本）、<code>〔M〕</code> 本机实测、<code>〔I〕</code> 推断待验证。</p>
+<hr />
+<h2 id="a-组--编程模型10-卡">A 组 · 编程模型（10 卡）<a class="headerlink" href="#a-组--编程模型10-卡" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>卡名</th>
+<th>必须能回答的问题</th>
+<th>本项目落点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>Blueprint 是什么</td>
+<td>蓝图的资产类型有哪几种？编译后变成什么？</td>
+<td>131 个 BP / 53 个 WBP</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Blueprint Class 与 Instance</td>
+<td>类和实例的差别？改类会怎样影响关卡里的实例？</td>
+<td><code>BP_ThirdPersonCharacter</code> vs <code>Start</code> 里的实例</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>事件图 vs 函数图 vs 宏</td>
+<td>三者各自什么时候用？Tick 写在哪？</td>
+<td><code>BP_TaskManager1</code> 的事件图</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>纯函数与副作用</td>
+<td>纯函数不能有什么？为什么 Sequence 节点不能当流程控制用</td>
+<td>交互点里的分支逻辑</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>Cast 的本质与代价</td>
+<td>Cast 失败会发生什么？为什么大量 Cast 是坏味道</td>
+<td><code>Cast To BP_ThirdPersonCharacter</code> 的存量</td>
+</tr>
+<tr>
+<td>A6</td>
+<td>Blueprint Interface</td>
+<td>接口解决什么问题？与 Cast 的取舍</td>
+<td><code>BPI_interact</code></td>
+</tr>
+<tr>
+<td>A7</td>
+<td>Event Dispatcher（多播委托）</td>
+<td>一对多广播怎么实现？跨关卡能不能活？</td>
+<td>TaskManager → UI 的通知</td>
+</tr>
+<tr>
+<td>A8</td>
+<td>变量的作用域与复制</td>
+<td>Instance Editable / Expose on Spawn / Replicated 的差别</td>
+<td>50 个交互点的默认值</td>
+</tr>
+<tr>
+<td>A9</td>
+<td>构造脚本（Construction Script）</td>
+<td>什么时候执行？能做什么不能做什么</td>
+<td>交互点的组件初始化</td>
+</tr>
+<tr>
+<td>A10</td>
+<td>蓝图性能陷阱</td>
+<td>哪些写法会拖帧？Tick 的替代方案</td>
+<td>单例管理器的 Tick</td>
+</tr>
+</tbody>
+</table>
+<p>〔O〕<a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/blueprints-visual-scripting-in-unreal-engine?application_version=5.7">Blueprints Visual Scripting</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/interfaces-in-unreal-engine?application_version=5.7">Interfaces</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/event-dispatchers-in-unreal-engine?application_version=5.7">Event Dispatchers</a></p>
+<h2 id="b-组--对象模型12-卡">B 组 · 对象模型（12 卡）<a class="headerlink" href="#b-组--对象模型12-卡" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>卡名</th>
+<th>必须能回答的问题</th>
+<th>本项目落点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>Actor</td>
+<td>什么样的东西必须是 Actor？Actor 的生命周期钩子有哪些</td>
+<td>376 个 actor</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Pawn 与 Controller</td>
+<td>Pawn 为什么能被「占有」？Possess 做了什么</td>
+<td><code>BP_ThirdPersonCharacter</code></td>
+</tr>
+<tr>
+<td>B3</td>
+<td>Character</td>
+<td>Character 比 Pawn 多了什么？胶囊体与移动组件</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Component 三层结构</td>
+<td>UActorComponent / USceneComponent / UPrimitiveComponent 各多出什么能力</td>
+<td>交互点组件树</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>常用组件速查</td>
+<td>StaticMesh / SkeletalMesh / Widget / Audio / Collision 各自职责</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>B6</td>
+<td>Transform 与层级</td>
+<td>父子组件的 Transform 是怎么叠加的？Attach 规则</td>
+<td>复合物体（Child15 的 4 个 Mesh）</td>
+</tr>
+<tr>
+<td>B7</td>
+<td>碰撞通道与 Preset</td>
+<td>Channel 与 Preset 的区别？自定义 <code>interact</code> 通道怎么用</td>
+<td><code>DefaultEngine.ini</code> 的 <code>ECC_GameTraceChannel1</code></td>
+</tr>
+<tr>
+<td>B8</td>
+<td>Overlap vs Hit</td>
+<td>什么时候只报 Overlap？什么时候需要 Block</td>
+<td>器材拾取</td>
+</tr>
+<tr>
+<td>B9</td>
+<td>Trace 查询</td>
+<td>Line / Sphere / Capsule Trace 的差别？多通道查询怎么写</td>
+<td>视线检测</td>
+</tr>
+<tr>
+<td>B10</td>
+<td>生成与销毁</td>
+<td>Spawn 参数怎么传？销毁时机与 GC</td>
+<td>交互产生的临时物体</td>
+</tr>
+<tr>
+<td>B11</td>
+<td>物理与 Chaos</td>
+<td>Physics Asset 干什么？简单碰撞与复杂碰撞的取舍</td>
+<td><code>SKM_niezi2</code> 等骨骼网格</td>
+</tr>
+<tr>
+<td>B12</td>
+<td>组件复用的边界</td>
+<td>什么时候该抽 Component，什么时候该用 Actor 组合</td>
+<td>交互点模板的抽取方案</td>
+</tr>
+</tbody>
+</table>
+<p>〔O〕<a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/actors-in-unreal-engine?application_version=5.7">Actors</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/components-in-unreal-engine?application_version=5.7">Components</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/collision-in-unreal-engine?application_version=5.7">Collision</a></p>
+<h2 id="c-组--运行时框架12-卡">C 组 · 运行时框架（12 卡）<a class="headerlink" href="#c-组--运行时框架12-卡" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>卡名</th>
+<th>必须能回答的问题</th>
+<th>本项目落点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>Gameplay Framework 全景</td>
+<td>五件套谁创建谁、谁活多久</td>
+<td>见 L0-3</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>GameMode</td>
+<td>为什么 GameMode 只该放规则？换关会怎样</td>
+<td><code>UI/BP/NewGameMode</code></td>
+</tr>
+<tr>
+<td>C3</td>
+<td>GameState</td>
+<td>单机项目需要它吗？什么时候需要</td>
+<td>本项目未用</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>PlayerController</td>
+<td>为什么它跨 Pawn 存续？输入该绑在哪</td>
+<td><code>BP_playercontroller</code></td>
+</tr>
+<tr>
+<td>C5</td>
+<td>PlayerState</td>
+<td>玩家数据放这里还是 GameInstance</td>
+<td>本项目未用</td>
+</tr>
+<tr>
+<td>C6</td>
+<td>GameInstance</td>
+<td>跨关卡常驻的代价是什么？什么该放这里</td>
+<td><code>BP_ChemistryGameInstance</code></td>
+</tr>
+<tr>
+<td>C7</td>
+<td>HUD</td>
+<td>UE5 里 HUD 还有用吗？与 UMG 的分工</td>
+<td><code>BP_HUD</code></td>
+</tr>
+<tr>
+<td>C8</td>
+<td>World 与 Level</td>
+<td><code>.umap</code> 里到底存了什么？Persistent 与 Sublevel</td>
+<td><code>Start.umap</code></td>
+</tr>
+<tr>
+<td>C9</td>
+<td>Level Blueprint</td>
+<td>什么时候该用关卡蓝图，什么时候是坏味道</td>
+<td>待查</td>
+</tr>
+<tr>
+<td>C10</td>
+<td>Level Streaming</td>
+<td>流送与 OpenLevel 的差别？什么时候触发</td>
+<td><code>JiaZai_ui</code> 加载流程</td>
+</tr>
+<tr>
+<td>C11</td>
+<td>World Partition</td>
+<td>小场景该不该开？开了的代价</td>
+<td>本项目未开</td>
+</tr>
+<tr>
+<td>C12</td>
+<td>子系统（Subsystem）</td>
+<td>不用 Actor 也能有全局逻辑？适合放什么</td>
+<td>可选的改造方向</td>
+</tr>
+</tbody>
+</table>
+<p>〔O〕<a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/gameplay-framework-in-unreal-engine?application_version=5.7">Gameplay Framework</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/game-mode-and-game-state-in-unreal-engine?application_version=5.7">Game Mode and Game State</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/programming-subsystems-in-unreal-engine?application_version=5.7">Programming Subsystems</a></p>
+<h2 id="d-组--表现16-卡">D 组 · 表现（16 卡）<a class="headerlink" href="#d-组--表现16-卡" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>卡名</th>
+<th>必须能回答的问题</th>
+<th>本项目落点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>PBR 四通道</td>
+<td>BaseColor / Metallic / Roughness / Specular 各控制什么</td>
+<td>294 个 Materia</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>材质与材质实例</td>
+<td>为什么 163 个槽用同一个父材质？改父材质的代价</td>
+<td><code>M_Opt_Surface_Var</code></td>
+</tr>
+<tr>
+<td>D3</td>
+<td>Material Function</td>
+<td>什么该抽成函数？参数怎么传</td>
+<td>78 个 MF</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>Substrate</td>
+<td>它替代了什么？为什么文档还标 Beta</td>
+<td><code>r.Substrate=True</code></td>
+</tr>
+<tr>
+<td>D5</td>
+<td>Lumen GI</td>
+<td>它凭什么实时？代价在哪</td>
+<td>已启用</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>Lumen 反射</td>
+<td><code>MaxRoughnessToTrace</code> 在限制什么</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>D7</td>
+<td>Nanite</td>
+<td>什么几何适合 Nanite？什么时候反而更慢</td>
+<td>301 个 SM</td>
+</tr>
+<tr>
+<td>D8</td>
+<td>阴影三档 Mobility</td>
+<td>Static / Stationary / Movable 的差别与选择</td>
+<td>13 盏灯全 Movable</td>
+</tr>
+<tr>
+<td>D9</td>
+<td>为什么关 VSM 改 CSM</td>
+<td>两者的代价模型差别</td>
+<td><code>r.Shadow.Virtual.Enable=0</code></td>
+</tr>
+<tr>
+<td>D10</td>
+<td>后处理链</td>
+<td>Bloom / 曝光 / 调色 / 锐化 的执行顺序</td>
+<td><code>PP_Opt</code></td>
+</tr>
+<tr>
+<td>D11</td>
+<td>TSR</td>
+<td>时域超分靠什么工作？什么情况下会糊</td>
+<td><code>TSR.Sharpness=0.7</code></td>
+</tr>
+<tr>
+<td>D12</td>
+<td>雾与体积效果</td>
+<td>指数高度雾与体积雾的差别</td>
+<td><code>ExpFog_Room</code> 密度 0.0008</td>
+</tr>
+<tr>
+<td>D13</td>
+<td>MetaHuman 组成</td>
+<td>DNA / RigLogic / 骨骼 / Groom 各是什么</td>
+<td>840 个文件</td>
+</tr>
+<tr>
+<td>D14</td>
+<td>Skeleton 与 Retargeter</td>
+<td>两套骨骼怎么映射？IK Rig 的角色</td>
+<td>5 个 IKRig / 5 个 Retargeter</td>
+</tr>
+<tr>
+<td>D15</td>
+<td>AnimBlueprint 与 Montage</td>
+<td>状态机管什么？Montage 管什么</td>
+<td><code>ABP_walk</code>、189 个 AnimSequence</td>
+</tr>
+<tr>
+<td>D16</td>
+<td>Sequencer</td>
+<td>Level Sequence 与 Montage 的边界？Event Track 能干什么</td>
+<td>79 个 LS</td>
+</tr>
+</tbody>
+</table>
+<p>〔O〕<a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-materials?application_version=5.7">Materials</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/substrate-materials-in-unreal-engine?application_version=5.7">Substrate</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/lumen-global-illumination-and-reflections-in-unreal-engine?application_version=5.7">Lumen</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/light-types-and-their-mobility-in-unreal-engine?application_version=5.7">Light Mobility</a> · <a href="https://dev.epicgames.com/documentation/en-us/metahuman/metahuman-documentation">MetaHuman</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/ik-rig-animation-retargeting-in-unreal-engine?application_version=5.7">IK Retargeting</a></p>
+<h2 id="e-组--ui-与数据12-卡">E 组 · UI 与数据（12 卡）<a class="headerlink" href="#e-组--ui-与数据12-卡" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>卡名</th>
+<th>必须能回答的问题</th>
+<th>本项目落点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>Slate 与 UMG</td>
+<td>谁是谁的封装？什么时候必须碰 Slate</td>
+<td>53 个 WBP</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>Widget 生命周期</td>
+<td>Construct / OnInitialized / Tick 各什么时候跑</td>
+<td>各 WBP</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>输入模式三态</td>
+<td>UI Only / Game Only / Game and UI 怎么选</td>
+<td>登录页 vs 实验页</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>CommonUI</td>
+<td>它解决什么问题？输入栈怎么用</td>
+<td>项目已启</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>Enhanced Input</td>
+<td>IA / IMC / Modifier / Trigger 各是什么</td>
+<td>3 IA + 1 IMC</td>
+</tr>
+<tr>
+<td>E6</td>
+<td>新旧输入并存</td>
+<td>旧式 Axis Mapping 与 Enhanced Input 谁生效</td>
+<td><code>DefaultInput.ini</code></td>
+</tr>
+<tr>
+<td>E7</td>
+<td>DPI 缩放</td>
+<td>ScaleToFit 怎么换算？为什么 4K 下 UI 会糊</td>
+<td><code>UIScaleRule</code></td>
+</tr>
+<tr>
+<td>E8</td>
+<td>DataTable</td>
+<td>行类型必须是 Struct？怎么从 CSV 导入</td>
+<td>10 个 DT</td>
+</tr>
+<tr>
+<td>E9</td>
+<td>Struct 与 Enum</td>
+<td>Struct 能不能嵌套？Enum 存的是什么</td>
+<td>9 Struct / 5 Enum</td>
+</tr>
+<tr>
+<td>E10</td>
+<td>DataAsset</td>
+<td>什么时候用 DataAsset 而不是 DataTable</td>
+<td>可选改造</td>
+</tr>
+<tr>
+<td>E11</td>
+<td>富文本与装饰器</td>
+<td>RichText 怎么插图片？装饰器在哪注册</td>
+<td><code>NewRichTextBlockDecorator</code></td>
+</tr>
+<tr>
+<td>E12</td>
+<td>本地化</td>
+<td>本项目为什么只 stage en？中文怎么处理</td>
+<td><code>CulturesToStage=en</code></td>
+</tr>
+</tbody>
+</table>
+<p>〔O〕<a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/creating-user-interfaces-with-umg-and-slate-in-unreal-engine?application_version=5.7">UMG</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/common-ui-plugin-for-advanced-user-interfaces-in-unreal-engine?application_version=5.7">CommonUI</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/enhanced-input-in-unreal-engine?application_version=5.7">Enhanced Input</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/data-driven-gameplay-elements-in-unreal-engine?application_version=5.7">Data Driven Gameplay</a></p>
+<h2 id="f-组--工程化8-卡">F 组 · 工程化（8 卡）<a class="headerlink" href="#f-组--工程化8-卡" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>卡名</th>
+<th>必须能回答的问题</th>
+<th>本项目落点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1</td>
+<td>Cook 到底做了什么</td>
+<td>为什么编辑器能跑、打包就丢资产</td>
+<td><code>bCookAll=False</code></td>
+</tr>
+<tr>
+<td>F2</td>
+<td>Pak 与 IoStore</td>
+<td>两者关系？Oodle 压缩在哪一步</td>
+<td><code>UsePakFile/bUseIoStore=True</code></td>
+</tr>
+<tr>
+<td>F3</td>
+<td>Shader 编译与 DDC</td>
+<td>为什么换机器要重编几十分钟</td>
+<td><code>DerivedDataCache/</code></td>
+</tr>
+<tr>
+<td>F4</td>
+<td>性能工具</td>
+<td><code>stat unit</code> 四项各代表什么</td>
+<td>见 L3-3</td>
+</tr>
+<tr>
+<td>F5</td>
+<td>蓝图项目的性能上限</td>
+<td>纯蓝图能做多大？瓶颈通常在哪</td>
+<td>无 C++ 模块</td>
+</tr>
+<tr>
+<td>F6</td>
+<td>资产命名与目录</td>
+<td>前缀规范怎么定？谁维护</td>
+<td>见 L1-3</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>版本管理与 Git LFS</td>
+<td>哪些文件必须 LFS？指针文件是什么</td>
+<td><code>.gitattributes</code></td>
+</tr>
+<tr>
+<td>F8</td>
+<td>自动化</td>
+<td>RemoteControl / Python 能替人做什么</td>
+<td><code>Saved/opt</code> 30 个脚本</td>
+</tr>
+</tbody>
+</table>
+<p>〔O〕<a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/packaging-your-project?application_version=5.7">Packaging</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/zen-loader-in-unreal-engine?application_version=5.7">Zen Loader</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/using-derived-data-cache-in-unreal-engine?application_version=5.7">DDC</a> · <a href="https://dev.epicgames.com/documentation/en-us/unreal-engine/stat-commands-in-unreal-engine?application_version=5.7">Stat Commands</a></p>
+<hr />
+<h2 id="附录卡">附录卡<a class="headerlink" href="#附录卡" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>内容</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AP-1</td>
+<td>术语中英对照</td>
+<td>一张表：Blueprint / Actor / Component / GameMode … 共 80 条，右侧写「本项目里的具体指代」</td>
+</tr>
+<tr>
+<td>AP-2</td>
+<td>答辩 10 问</td>
+<td>每问：30 秒版答案 + 追问预案 + 证据位置</td>
+</tr>
+<tr>
+<td>AP-3</td>
+<td>自测 40 题</td>
+<td>每卡 1 题，答案折叠，含 10 道推演题</td>
+</tr>
+</tbody>
+</table>
+<h2 id="写作顺序建议">写作顺序建议<a class="headerlink" href="#写作顺序建议" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>第一周：A1-A5（编程模型骨架）+ B1-B5（对象模型骨架）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>第二周：C1-C6（框架）+ E1-E5（UI 与输入）
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>第三周：D1-D5（渲染主干）+ F1-F3（打包）
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>第四周：其余按你实际要改的模块挑
+</code></pre></div>
+<p>宁可 20 张写透，不要 70 张写空。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m5 12 7-7 7 7" /> <path d="M12 19V5" /> </svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../javascripts/lightbox.js"></script>
+      
+    
+  </body>
+</html>

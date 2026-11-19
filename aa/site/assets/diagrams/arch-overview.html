@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>aa 项目架构图 · 可交互总览</title>
+<style>
+  :root{
+    --ink:#1d1d1f; --ink-2:#424245; --ink-3:#6e6e73; --mute:#86868b;
+    --bg:#f5f5f7; --card:rgba(255,255,255,.72); --card-solid:#fff;
+    --line:rgba(0,0,0,.10); --accent:#0a84ff; --accent-soft:rgba(10,132,255,.10);
+    --ok:#30a46c; --warn:#e8a13c; --bad:#e5484d;
+    --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.06);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ink:#f5f5f7; --ink-2:#d1d1d6; --ink-3:#a1a1a6; --mute:#86868b;
+      --bg:#1c1c1e; --card:rgba(44,44,46,.72); --card-solid:#2c2c2e;
+      --line:rgba(255,255,255,.12); --accent:#409cff; --accent-soft:rgba(64,156,255,.14);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.55}
+  .wrap{max-width:1320px;margin:0 auto;padding:20px}
+  header{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:14px}
+  h1{font-size:19px;margin:0;letter-spacing:-.01em}
+  .meta{color:var(--mute);font-size:12px;font-family:var(--mono)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .tab{border:1px solid var(--line);background:var(--card);color:var(--ink-2);padding:7px 14px;border-radius:999px;cursor:pointer;font-size:13px;transition:.15s}
+  .tab:hover{border-color:var(--accent);color:var(--accent)}
+  .tab.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .stage{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items:start}
+  @media(max-width:900px){.stage{grid-template-columns:1fr}}
+  .canvas{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:auto;padding:10px;min-height:560px}
+  .canvas svg{display:block}
+  .node{position:absolute;border:1px solid var(--line);background:var(--card-solid);border-radius:10px;padding:8px 10px;cursor:pointer;transition:.15s;box-shadow:0 1px 2px rgba(0,0,0,.04);overflow:hidden}
+  .node:hover{border-color:var(--accent);transform:translateY(-1px);box-shadow:0 6px 18px var(--accent-soft)}
+  .node.sel{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 3px var(--accent-soft)}
+  .node .t{font-weight:600;font-size:12.5px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .node .s{font-size:11px;color:var(--mute);font-family:var(--mono);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .node[data-kind="core"]{border-left:3px solid var(--accent)}
+  .node[data-kind="debt"]{border-left:3px solid var(--bad)}
+  .node[data-kind="data"]{border-left:3px solid var(--ok)}
+  .node[data-kind="ui"]{border-left:3px solid var(--warn)}
+  .band{position:absolute;border:1px dashed var(--line);border-radius:12px;pointer-events:none}
+  .band span{position:absolute;left:10px;top:6px;font-size:11px;color:var(--mute);font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase}
+  aside{position:sticky;top:20px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:14px}
+  aside h2{font-size:13px;margin:0 0 8px;color:var(--mute);font-weight:500;letter-spacing:.04em;text-transform:uppercase}
+  #detail{font-size:13px}
+  #detail .k{color:var(--mute);font-size:11px;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;margin-top:10px}
+  #detail .v{color:var(--ink)}
+  #detail code{font-family:var(--mono);font-size:11.5px;background:var(--accent-soft);color:var(--accent);padding:1px 5px;border-radius:4px;word-break:break-all}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;font-size:11.5px;color:var(--mute)}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;vertical-align:middle}
+  footer{margin-top:14px;color:var(--mute);font-size:11.5px;font-family:var(--mono)}
+  .hint{font-size:12px;color:var(--mute);margin:0 0 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>aa · 虚拟仿真化学实验 · 架构图</h1>
+      <div class="meta">UE 5.7.4 · 纯蓝图 · 2758 uasset · 数据来源 Saved/ue_audit（2026-11-19 导出）</div>
+    </div>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--accent)"></i>框架核心</span>
+      <span><i class="dot" style="background:var(--bad)"></i>技术债</span>
+      <span><i class="dot" style="background:var(--ok)"></i>数据层</span>
+      <span><i class="dot" style="background:var(--warn)"></i>UI</span>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab on" data-view="arch">① 分层总览</button>
+    <button class="tab" data-view="boot">② 启动链路</button>
+    <button class="tab" data-view="interact">③ 交互链路</button>
+  </div>
+
+  <p class="hint">点任意方块查看详情与对应文档；悬停高亮。切页签换视图。</p>
+
+  <div class="stage">
+    <div class="canvas" id="canvas"><svg id="wires" width="100%" height="100%"></svg></div>
+    <aside>
+      <h2>详情</h2>
+      <div id="detail"><span style="color:var(--mute)">点左侧任意节点</span></div>
+    </aside>
+  </div>
+
+  <footer>diagram v1 · 手写 SVG · 无外部依赖 · 改数据请编辑本文件底部的 VIEWS 对象</footer>
+</div>
+
+<script>
+const VIEWS = {
+  arch: {
+    w: 1180, h: 620,
+    bands: [
+      {x:10,y:8,w:1160,h:96,label:"编辑器层 / 工具链"},
+      {x:10,y:118,w:1160,h:150,label:"资产层 Content/"},
+      {x:10,y:282,w:1160,h:170,label:"运行时 Gameplay Framework"},
+      {x:10,y:466,w:1160,h:146,label:"系统模块（业务）"}
+    ],
+    nodes: [
+      {id:"ed",  x:30,  y:34, w:180,h:52, t:"UnrealEditor 5.7.4", s:"D:\\UE\\UE_5.7", kind:"core",
+        d:"引擎本体。项目用 5.7.4 / CL 51494982〔M〕。启动参数、日志位置都从这里的版本号派生。", doc:"getting-started/project-overview.md"},
+      {id:"up",  x:230, y:34, w:170,h:52, t:"aa.uproject", s:"EngineAssociation 5.7",
+        d:"工程描述文件。只决定「用哪个引擎打开」，不含逻辑。缺插件时双击会弹出缺失插件列表。", doc:"getting-started/project-overview.md"},
+      {id:"cfg", x:420, y:34, w:220,h:52, t:"Config/*.ini", s:"Engine / Game / Input / RC", kind:"core",
+        d:"真正的启动开关：默认地图、GameMode、渲染参数、旧式输入映射都在这。文档与 ini 一旦漂移，就是最隐蔽的 bug。〔M〕DefaultEngine.ini / DefaultGame.ini / DefaultInput.ini", doc:"getting-started/boot-flow.md"},
+      {id:"rc",  x:660, y:34, w:230,h:52, t:"RemoteControl 30010", s:"/remote/object/call (PUT)", kind:"core",
+        d:"自动化入口。HTTP 路由只接受 PUT 做写入类调用（GET 仅 /remote/info 等）。可用于批量导出资产信息、改属性。", doc:"build/automation.md"},
+      {id:"tools",x:910, y:34, w:240,h:52, t:"Saved/opt · 30 个脚本", s:"Python 批处理",
+        d:"历史上做材质/灯光/渲染优化留下的脚本集合，可直接复用为批量操作模板。", doc:"build/automation.md"},
+
+      {id:"bp",  x:30,  y:150, w:210,h:60, t:"Blueprint ×131", s:"类定义 + 事件图", kind:"core",
+        d:"业务逻辑的主要载体。纯蓝图工程没有 C++ 模块，类型检查全部发生在编辑器里。", doc:"kb/a-programming-model.md"},
+      {id:"wbp", x:260, y:150, w:180,h:60, t:"WidgetBlueprint ×53", s:"UMG 界面", kind:"ui",
+        d:"UI 层。入口是 L_Login 与 WBP_main；对话框在 Deepseek/UMG_dialogPanel。", doc:"ui/widget-overview.md"},
+      {id:"ls",  x:460, y:150, w:180,h:60, t:"LevelSequence ×79", s:"LS_lcz / LS_YYF", kind:"data",
+        d:"实验步骤演示动画。两套命名前缀对应两位作者的分支，需在 L2-6 任务卡里做归类。", doc:"animation/level-sequence.md"},
+      {id:"dt",  x:660, y:150, w:200,h:60, t:"DataTable ×10 / Struct ×9", s:"DT_Tasks 75 行", kind:"data",
+        d:"配置驱动层：任务步骤、提示、说明书、注意事项、实验报告表格都在表里。", doc:"systems/data-layer.md"},
+      {id:"mh",  x:880, y:150, w:270,h:60, t:"MetaHuman ×840 文件", s:"DNA / RigLogic / Groom", kind:"data",
+        d:"数字人。含 1 个 MetaHumanCharacter、8 个 Groom、15 个 AnimBP、11 个 ControlRig。", doc:"kb/d-rendering.md"},
+      {id:"mesh",x:30,  y:222, w:340,h:36, t:"StaticMesh ×301 · Texture ×796 · Material ×294（MI ×211）", s:"建模/贴图/材质资源", kind:"data",
+        d:"渲染资产池。163 个槽已统一到父材质 M_Opt_Surface_Var，是渲染优化的核心成果。", doc:"render/pipeline.md"},
+      {id:"anim",x:390, y:222, w:340,h:36, t:"AnimSequence ×189 · PoseAsset ×165 · IKRetargeter ×5", s:"动画资源", kind:"data",
+        d:"角色与器材动画。两套骨骼之间靠 IK Rig + Retargeter 桥接。", doc:"kb/d-rendering.md"},
+      {id:"snd", x:750, y:222, w:400,h:36, t:"SoundWave ×104 · Niagara ×4 · Font ×7 · 富文本装饰器", s:"音频/特效/字体", kind:"data",
+        d:"声音与特效资源，以及富文本图文混排所需的字体样式行与图片行。", doc:"systems/data-layer.md"},
+
+      {id:"gi",  x:30,  y:320, w:220,h:64, t:"GameInstance", s:"BP_ChemistryGameInstance", kind:"core",
+        d:"跨关卡常驻。模式（E_PlayMode）、成绩、实验记录这类「换关不能丢」的数据应该在这里；放 GameMode 会随换关销毁。", doc:"getting-started/framework-roles.md"},
+      {id:"gm",  x:270, y:320, w:200,h:64, t:"GameMode", s:"UI/BP/NewGameMode", kind:"core",
+        d:"规则与流程入口。单机项目里它只在本地存在，负责「这一局怎么玩」。", doc:"getting-started/framework-roles.md"},
+      {id:"pc",  x:490, y:320, w:200,h:64, t:"PlayerController", s:"BP_playercontroller", kind:"core",
+        d:"玩家意志的持久代表，跨 Pawn 存续。输入绑定与 UI 焦点切换通常挂在这。", doc:"ui/input-mode.md"},
+      {id:"pawn",x:710, y:320, w:210,h:64, t:"Pawn / Character", s:"BP_ThirdPersonCharacter", kind:"core",
+        d:"被 Controller 占有的实体。Character 自带胶囊体与 CharacterMovement，是 ThirdPerson 模板的直接继承者。", doc:"kb/b-object-model.md"},
+      {id:"hud", x:940, y:320, w:210,h:64, t:"HUD", s:"BP_HUD + WBP_main", kind:"ui",
+        d:"旧式 2D 绘制层，UE5 里多数职责已被 UMG 取代；本项目仍有 BP_HUD 与 HUD_menu。", doc:"ui/widget-overview.md"},
+      {id:"lv",  x:30,  y:396, w:1120,h:40, t:"World / Level：Start.umap（376 actors）· L_Login · 4 张地图", s:"Persistent Level，未启用 World Partition",
+        d:"关卡容器。Start 里 246 个 StaticMeshActor、33 个 LevelSequenceActor、约 50 个交互点、13 盏灯。〔M〕02_level_actors.json", doc:"getting-started/boot-flow.md"},
+
+      {id:"ix",  x:30,  y:496, w:250,h:96, t:"交互系统", s:"BPI_interact + 约 50 个 Child*", kind:"debt",
+        d:"接口 + 约定 + 50 份复制。新增物体要复制蓝图，改文案要改 50 处 —— M4 里程碑的改造目标。", doc:"systems/interaction-system.md"},
+      {id:"task",x:300, y:496, w:230,h:96, t:"任务与流程", s:"TaskManager + DT_Tasks(75)", kind:"core",
+        d:"步骤推进的总线。由 DT 驱动，SequenceManager 负责播演示，TasktipsManager 负责提示。", doc:"systems/task-system.md"},
+      {id:"ui2", x:550, y:496, w:200,h:96, t:"UI 与输入模式", s:"CommonUI + 双输入系统", kind:"ui",
+        d:"旧式 Axis Mapping（13 Action / 7 Axis）与 Enhanced Input（3 IA / 1 IMC）并存，切换模式时应 Push/Pop IMC。", doc:"ui/input-mode.md"},
+      {id:"ai",  x:770, y:496, w:180,h:96, t:"AI 对话", s:"VaRest + DeepSeek + TTS", kind:"core",
+        d:"HTTP 请求 + 流式拼接 + 语音播报。安全债：Key 的存放位置必须单独说明。", doc:"systems/ai-dialog.md"},
+      {id:"png", x:970, y:496, w:180,h:96, t:"打包 / 部署", s:"Pak+IoStore / MkDocs", kind:"core",
+        d:"两条交付线：Windows 包（Oodle 压缩）与本技术文档站（MkDocs → site/）。", doc:"build/packaging.md"}
+    ],
+    edges: [
+      ["ed","up"],["up","cfg"],["cfg","rc"],["rc","tools"],
+      ["cfg","gm"],["cfg","gi"],
+      ["bp","ix"],["bp","task"],["wbp","ui2"],["ls","task"],["dt","task"],
+      ["gi","gm"],["gm","pc"],["pc","pawn"],["pc","hud"],["pawn","lv"],
+      ["ix","task"],["task","ui2"],["ui2","hud"],["task","ai"]
+    ]
+  },
+
+  boot: {
+    w: 1180, h: 470,
+    bands: [{x:10,y:8,w:1160,h:450,label:"启动链路（ms 级顺序，非帧精确）"}],
+    nodes: [
+      {id:"b1",x:40, y:60, w:170,h:56, t:"① exe / 编辑器启动", s:"读取 Config", kind:"core",
+        d:"引擎先读 DefaultEngine.ini 拿到 GameDefaultMap 与 GlobalDefaultGameMode，再决定创建什么。", doc:"getting-started/boot-flow.md"},
+      {id:"b2",x:250,y:60, w:170,h:56, t:"② L_Login", s:"GameDefaultMap", kind:"ui",
+        d:"登录图先出现。此时 GameInstance 已存在，GameMode/PC 按该图的 World Settings 创建。", doc:"getting-started/boot-flow.md"},
+      {id:"b3",x:460,y:60, w:190,h:56, t:"③ GameInstance 创建", s:"BP_ChemistryGameInstance", kind:"core",
+        d:"最早、活得最久的对象。整个进程只有它跨关卡存活。", doc:"getting-started/framework-roles.md"},
+      {id:"b4",x:690,y:60, w:190,h:56, t:"④ GameMode 初始化", s:"NewGameMode", kind:"core",
+        d:"InitGame → PreInitializeComponents → BeginPlay。换关会被销毁重建。", doc:"getting-started/framework-roles.md"},
+      {id:"b5",x:920,y:60, w:220,h:56, t:"⑤ PlayerController", s:"BP_playercontroller", kind:"core",
+        d:"玩家进入后才创建；跨 Pawn 存续，是输入与 UI 焦点的稳定落点。", doc:"ui/input-mode.md"},
+      {id:"b6",x:40, y:170,w:200,h:56, t:"⑥ Pawn 生成 + Possess", s:"PlayerStart", kind:"core",
+        d:"在 PlayerStart 位置生成 DefaultPawn，再由 PC 占有。生成时机受 GameMode 的 Spawn 规则控制。", doc:"kb/c-gameplay-framework.md"},
+      {id:"b7",x:280,y:170,w:200,h:56, t:"⑦ HUD / UI 挂载", s:"BP_HUD → WBP_main", kind:"ui",
+        d:"先 Set Input Mode（UI Only 给菜单、Game and UI 给对话），再 Add to Viewport。", doc:"ui/input-mode.md"},
+      {id:"b8",x:520,y:170,w:220,h:56, t:"⑧ 单例管理器拉起", s:"TaskManager / SequenceManager", kind:"core",
+        d:"关卡里预摆放的 Actor，BeginPlay 时注册自己，读 DT_Tasks 初始化第一步。", doc:"systems/task-system.md"},
+      {id:"b9",x:780,y:170,w:360,h:56, t:"⑨ 第一步任务可交互", s:"任务面板 + 指引箭头", kind:"core",
+        d:"BP_zhiyin1..5 用 SplineMesh 画指引箭头；交互点显示 3D 提示。到这里玩家可操作。", doc:"systems/interaction-system.md"},
+      {id:"n1",x:40, y:290,w:540,h:60, t:"换关会发生什么", s:"OpenLevel / 流送", kind:"debt",
+        d:"GameInstance 存活；GameMode / PC / Pawn / HUD 全部销毁重建；关卡里预摆放的 Actor 重新 BeginPlay。这就是「状态该放 GameInstance」的根本原因。", doc:"getting-started/framework-roles.md"},
+      {id:"n2",x:620,y:290,w:520,h:60, t:"为什么登录与主场景要分开", s:"L_Login → Start", kind:"core",
+        d:"登录页需要 UI Only 输入与不同 GameMode 行为；拆两个关卡比在一个关卡里切状态更干净，代价是过渡需要加载界面（JiaZai_ui）。", doc:"systems/level-streaming.md"}
+    ],
+    edges: [["b1","b2"],["b2","b3"],["b3","b4"],["b4","b5"],["b5","b6"],["b6","b7"],["b7","b8"],["b8","b9"],["b9","n1"],["n1","n2"]]
+  },
+
+  interact: {
+    w: 1180, h: 430,
+    bands: [{x:10,y:8,w:1160,h:410,label:"一次「按 E 交互」的完整链路"}],
+    nodes: [
+      {id:"i1",x:30, y:60, w:150,h:56, t:"① 靠近", s:"Overlap / 距离", kind:"core",
+        d:"触发体积（Box/Sphere）或角色侧的距离检测命中交互点。", doc:"systems/interaction-system.md"},
+      {id:"i2",x:210,y:60, w:160,h:56, t:"② 显示提示", s:"WidgetComponent", kind:"ui",
+        d:"3D 提示控件是挂在交互点上的 WidgetComponent，不是屏幕 UI。", doc:"ui/widget-overview.md"},
+      {id:"i3",x:400,y:60, w:150,h:56, t:"③ 按 E", s:"pressE / IA_Interact", kind:"core",
+        d:"旧式 InputAction「pressE」与 Enhanced Input 双轨都在，需确认实际生效的那一条。", doc:"ui/input-mode.md"},
+      {id:"i4",x:580,y:60, w:190,h:56, t:"④ 调接口", s:"BPI_interact", kind:"core",
+        d:"角色只知道「接口」，不知道对面是镊子还是容量瓶 —— 这是正确的解耦。", doc:"systems/interaction-system.md"},
+      {id:"i5",x:800,y:60, w:340,h:56, t:"⑤ 交互点自己分支", s:"E_interacttype", kind:"debt",
+        d:"按类型枚举走不同行为：拾取 / 点击 / 靠近触发 / 按住。类型分支写在每个 Child 里，是复制债的一部分。", doc:"systems/interaction-system.md"},
+      {id:"i6",x:30, y:180,w:200,h:56, t:"⑥ 改变自身状态", s:"隐藏 / 换 Mesh / 特效", kind:"core",
+        d:"物体层的即时反馈：隐藏、替换静态网格、播 Niagara、播音效。", doc:"kb/b-object-model.md"},
+      {id:"i7",x:260,y:180,w:220,h:56, t:"⑦ 写回任务进度", s:"TaskManager", kind:"core",
+        d:"交互成功要推进 DT_Tasks 的步骤，否则任务面板不动。", doc:"systems/task-system.md"},
+      {id:"i8",x:510,y:180,w:220,h:56, t:"⑧ 播演示动画", s:"SequenceManager → LS", kind:"core",
+        d:"复杂操作播 LevelSequence，一次性的动作可用 Montage 或 Timeline。", doc:"animation/level-sequence.md"},
+      {id:"i9",x:760,y:180,w:380,h:56, t:"⑨ 刷新 UI / 记录数据", s:"WBP_TaskPanel → S_ExperimentRecord", kind:"ui",
+        d:"任务面板刷新、实验报告写入、必要时更新 GameInstance 里的成绩。", doc:"systems/data-layer.md"},
+      {id:"k1",x:30, y:300,w:560,h:64, t:"债：文案与行为硬编码在 50 份里", s:"改一处要改 50 处", kind:"debt",
+        d:"建议的收敛路径：BP_InteractBase + DT_InteractConfig（字段表见系统页第 8 节）；迁移要分批 + 每批回归。", doc:"systems/interaction-system.md"},
+      {id:"k2",x:620,y:300,w:540,h:64, t:"债：Cast 与接口混用", s:"待核实", kind:"debt",
+        d:"〔I〕需你在角色蓝图里确认是 Cast 到具体类还是走接口 Message。前者会让「加一个器材就要改角色」。", doc:"blueprints/blueprint-notes.md"}
+    ],
+    edges: [["i1","i2"],["i2","i3"],["i3","i4"],["i4","i5"],["i5","i6"],["i5","i7"],["i7","i8"],["i8","i9"],["i6","k1"],["i4","k2"]]
+  }
+};
+
+const canvas = document.getElementById('canvas');
+const wires = document.getElementById('wires');
+const detail = document.getElementById('detail');
+let active = 'arch';
+
+function draw(viewKey){
+  active = viewKey;
+  const v = VIEWS[viewKey];
+  canvas.style.width = v.w + 'px';
+  canvas.style.height = v.h + 'px';
+  canvas.querySelectorAll('.node,.band').forEach(n => n.remove());
+  wires.setAttribute('width', v.w);
+  wires.setAttribute('height', v.h);
+  wires.setAttribute('viewBox', `0 0 ${v.w} ${v.h}`);
+  wires.innerHTML = '';
+
+  (v.bands || []).forEach(b => {
+    const d = document.createElement('div');
+    d.className = 'band';
+    d.style.cssText = `left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px`;
+    d.innerHTML = `<span>${b.label}</span>`;
+    canvas.appendChild(d);
+  });
+
+  const pos = {};
+  v.nodes.forEach(n => {
+    pos[n.id] = n;
+    const el = document.createElement('div');
+    el.className = 'node'; el.dataset.id = n.id; el.dataset.kind = n.kind || 'core';
+    el.style.cssText = `left:${n.x}px;top:${n.y}px;width:${n.w}px;height:${n.h}px`;
+    el.innerHTML = `<div class="t">${n.t}</div><div class="s">${n.s || ''}</div>`;
+    el.addEventListener('click', () => select(n, el));
+    canvas.appendChild(el);
+  });
+
+  const ns = 'http://www.w3.org/2000/svg';
+  (v.edges || []).forEach(([a, b]) => {
+    const A = pos[a], B = pos[b]; if (!A || !B) return;
+    const ax = A.x + A.w/2, ay = A.y + A.h, bx = B.x + B.w/2, by = B.y;
+    const my = (ay + by) / 2;
+    const p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', `M ${ax} ${ay} C ${ax} ${my}, ${bx} ${my}, ${bx} ${by}`);
+    p.setAttribute('stroke', 'var(--line)');
+    p.setAttribute('stroke-width', '1.5');
+    p.setAttribute('fill', 'none');
+    p.setAttribute('marker-end', 'url(#arw)');
+    wires.appendChild(p);
+  });
+  const defs = document.createElementNS(ns, 'defs');
+  defs.innerHTML = `<marker id="arw" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="var(--line)"/></marker>`;
+  wires.insertBefore(defs, wires.firstChild);
+
+  detail.innerHTML = '<span style="color:var(--mute)">点左侧任意节点</span>';
+}
+
+function select(n, el){
+  canvas.querySelectorAll('.node.sel').forEach(x => x.classList.remove('sel'));
+  el.classList.add('sel');
+  detail.innerHTML = `
+    <div style="font-weight:600;font-size:14px;margin-bottom:2px">${n.t}</div>
+    <div style="color:var(--mute);font-family:var(--mono);font-size:11px">${n.s || ''}</div>
+    <div class="v" style="margin-top:10px">${n.d || ''}</div>
+    ${n.doc ? `<div class="k">对应文档</div><div class="v"><code>${n.doc}</code></div>` : ''}
+  `;
+}
+
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+    t.classList.add('on');
+    draw(t.dataset.view);
+  });
+});
+
+draw('arch');
+</script>
+</body>
+</html>

@@ -4,18 +4,18 @@
 
 ## 环境要求
 
-- **UE 版本**：5.4.4
-- **目标平台**：Windows
+- **UE 版本**：5.4.4及以上
+- **目标平台**：Window
 - **编程语言**：蓝图（无 C++）
 
 ### 必需插件
 
 以下插件需要**提前下载安装**，否则可能打不开项目：
 
-| 插件 | 费用 | 用途 |
-|------|------|------|
-| VaRest | 免费 | HTTP 请求（AI 对话 API） |
-| EasyCsv | ¥30 | CSV 数据读写（实验报告导出） |
+| 插件      | 费用  | 用途                 |
+| ------- | --- | ------------------ |
+| VaRest  | 免费  | HTTP 请求（AI 对话 API） |
+| EasyCsv | ¥30 | CSV 数据读写（实验报告导出）   |
 
 > 其他插件是引擎内置或项目已包含，不需要单独下载。
 
@@ -45,20 +45,20 @@ Content/
 
 ### 命名规则
 
-| 分类 | 前缀 | 示例 |
-|------|------|------|
-| 静态网格 | `SM_` | `SM_Beaker` |
-| 骨骼网格 | `SK_` | `SK_Character` |
-| 基础材质 | `M_` | `M_Glass` |
-| 材质实例 | `MI_` | `MI_Glass_Blue` |
-| 蓝图 Actor | `BP_` | `BP_TaskManager1` |
-| 动画蓝图 | `ABP_` | `ABP_Character` |
-| 控件蓝图 | `WBP_` | `WBP_gameover` |
-| 关卡序列 | `LS_` | `LS_YYF` |
-| 枚举 | `E_` | `E_PlayMode` |
-| 数据表 | `DT_` | `DT_ExperimentData` |
-| 结构体 | `S_` | `S_ExperimentRecord` |
-| 字体 | `Font_` | `Font_HanChan` |
+| 分类       | 前缀      | 示例                   |
+| -------- | ------- | -------------------- |
+| 静态网格     | `SM_`   | `SM_Beaker`          |
+| 骨骼网格     | `SK_`   | `SK_Character`       |
+| 基础材质     | `M_`    | `M_Glass`            |
+| 材质实例     | `MI_`   | `MI_Glass_Blue`      |
+| 蓝图 Actor | `BP_`   | `BP_TaskManager1`    |
+| 动画蓝图     | `ABP_`  | `ABP_Character`      |
+| 控件蓝图     | `WBP_`  | `WBP_gameover`       |
+| 关卡序列     | `LS_`   | `LS_YYF`             |
+| 枚举       | `E_`    | `E_PlayMode`         |
+| 数据表      | `DT_`   | `DT_ExperimentData`  |
+| 结构体      | `S_`    | `S_ExperimentRecord` |
+| 字体       | `Font_` | `Font_HanChan`       |
 
 ## 核心配置
 

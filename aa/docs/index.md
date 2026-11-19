@@ -15,6 +15,9 @@
 
 | 章节 | 说明 |
 |------|------|
+| [复盘路线图](复盘/路线图.md) | 22 个任务卡 + 状态表：怎么系统地回顾这个项目 |
+| [知识地图](kb/index.md) | 70 张知识卡索引，每张写清「该能回答什么问题」 |
+| [架构图](复盘/架构图.md) | 可交互：分层总览 / 启动链路 / 交互链路 |
 | [快速入门](getting-started/project-overview.md) | 怎么打开项目、目录结构、环境配置 |
 | [关卡序列动画](animation/level-sequence.md) | Sequencer 制作、蓝图交互、步骤跳转 |
 | [Widget UI](ui/widget-overview.md) | UMG 控件、数据绑定、事件处理 |
@@ -22,6 +25,7 @@
 | [蓝图笔记](blueprints/blueprint-notes.md) | 蓝图通信、命名规范 |
 | [AI 对话](systems/ai-dialog.md) | API 接入、对话面板、TTS |
 | [任务系统](systems/task-system.md) | DataTable 驱动、步骤推进 |
+| [交互系统](systems/interaction-system.md) | 接口 + 50 个交互点，最大技术债在哪 |
 | [关卡加载](systems/level-streaming.md) | 流式加载、加载界面 |
 | [模型](assets/models.md) | 命名规范、碰撞、常见问题 |
 | [插件](plugins/third-party.md) | 第三方插件清单与用法 |
