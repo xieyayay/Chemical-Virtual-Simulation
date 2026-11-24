@@ -81,6 +81,7 @@ nav:
       - 项目概览: getting-started/project-overview.md
   - 知识地图:
       - 知识卡索引: kb/index.md
+      - 蓝图知识点总表: kb/blueprint-index.md
   - 关卡序列动画:
       - Level Sequence: animation/level-sequence.md
   - UI & Widget:

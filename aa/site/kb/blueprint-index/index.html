@@ -1,0 +1,3391 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="基于UE5 5.4.4全蓝图的虚拟仿真化学实验教学软件">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../animation/level-sequence/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>蓝图知识点总表 - aa · 技术文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+  
+  
+    
+      
+      
+      
+    
+  
+  
+  <style>:root{.md-tag{--md-tag-icon:url('data:image/svg+xml;charset=utf-8,%3C%21--%20%40license%20lucide-static%20v0.545.0%20-%20ISC%20--%3E%20%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22currentColor%22%20stroke-width%3D%221.75%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20%3E%20%3Cpath%20d%3D%22M12.586%202.586A2%202%200%200%200%2011.172%202H4a2%202%200%200%200-2%202v7.172a2%202%200%200%200%20.586%201.414l8.704%208.704a2.426%202.426%200%200%200%203.42%200l6.58-6.58a2.426%202.426%200%200%200%200-3.42z%22%20/%3E%20%3Ccircle%20cx%3D%227.5%22%20cy%3D%227.5%22%20r%3D%22.5%22%20fill%3D%22currentColor%22%20/%3E%20%3C/svg%3E');}}</style>
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/fonts.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/system.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/icons.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#蓝图知识点总表" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="aa · 技术文档" class="md-header__button md-logo" aria-label="aa · 技术文档" data-md-component="logo">
+      
+  
+  <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" /> <path d="M6.453 15h11.094" /> <path d="M8.5 2h7" /> </svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 5h16" /> <path d="M4 12h16" /> <path d="M4 19h16" /> </svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            aa · 技术文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              蓝图知识点总表
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换暗色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换暗色模式" for="__palette_1" hidden>
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /> </svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换亮色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换亮色模式" for="__palette_0" hidden>
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <circle cx="12" cy="12" r="4" /> <path d="M12 2v2" /> <path d="M12 20v2" /> <path d="m4.93 4.93 1.41 1.41" /> <path d="m17.66 17.66 1.41 1.41" /> <path d="M2 12h2" /> <path d="M20 12h2" /> <path d="m6.34 17.66-1.41 1.41" /> <path d="m19.07 4.93-1.41 1.41" /> </svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m21 21-4.34-4.34" /> <circle cx="11" cy="11" r="8" /> </svg>
+        
+        <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /> </svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <circle cx="18" cy="5" r="3" /> <circle cx="6" cy="12" r="3" /> <circle cx="18" cy="19" r="3" /> <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /> <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /> </svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M18 6 6 18" /> <path d="m6 6 12 12" /> </svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="aa · 技术文档" class="md-nav__button md-logo" aria-label="aa · 技术文档" data-md-component="logo">
+      
+  
+  <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" /> <path d="M6.453 15h11.094" /> <path d="M8.5 2h7" /> </svg>
+
+    </a>
+    aa · 技术文档
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    复盘
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    复盘
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%A4%8D%E7%9B%98/%E8%B7%AF%E7%BA%BF%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%A4%8D%E7%9B%98/%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    写作规范
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%A4%8D%E7%9B%98/%E6%9E%B6%E6%9E%84%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速入门
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    快速入门
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/project-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目概览
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识地图
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    知识地图
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知识卡索引
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    蓝图知识点总表
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    蓝图知识点总表
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一先诊断为什么归纳不出来" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、先诊断：为什么归纳不出来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二三个工具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、三个工具
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、三个工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#工具-1--正交切分六个维度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具 1 · 正交切分（六个维度）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工具-2--粒度尺判断一条该不该独立成条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具 2 · 粒度尺（判断一条该不该独立成条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工具-3--漏项矩阵三个必扫矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具 3 · 漏项矩阵（三个必扫矩阵）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三清单9-模块--137-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、清单（9 模块 · 137 条）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、清单（9 模块 · 137 条）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b0--本体蓝图到底是什么8-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B0 · 本体：蓝图到底是什么（8 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b1--形态蓝图以哪些资产存在11-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B1 · 形态：蓝图以哪些资产存在（11 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b2--语法写蓝图时的最小单元30-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B2 · 语法：写蓝图时的最小单元（30 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b3--结构运行时构成20-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B3 · 结构：运行时构成（20 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b4--协作蓝图之间怎么说话14-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B4 · 协作：蓝图之间怎么说话（14 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b5--时间执行顺序与生命周期16-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B5 · 时间：执行顺序与生命周期（16 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b6--数据值怎么存怎么配14-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B6 · 数据：值怎么存、怎么配（14 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b7--工程调试性能协作16-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B7 · 工程：调试、性能、协作（16 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b8--边界蓝图与-c与工具链8-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B8 · 边界：蓝图与 C++、与工具链（8 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四从知识到项目三条串联线" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、从知识到项目：三条串联线
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、从知识到项目：三条串联线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#线-1--一次调用的数据流讲怎么动" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线 1 · 一次调用的数据流（讲「怎么动」）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#线-2--一个对象的生命周期讲活多久谁先谁后" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线 2 · 一个对象的生命周期（讲「活多久、谁先谁后」）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#线-3--一次改动的传播链讲为什么不能随便改" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线 3 · 一次改动的传播链（讲「为什么不能随便改」）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#三条线的收口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三条线的收口
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#五条目卡模板写正文用比六段式更轻" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、条目卡模板（写正文用，比六段式更轻）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#六你的动作清单今天-30-分钟能做完" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、你的动作清单（今天 30 分钟能做完）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关卡序列动画
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    关卡序列动画
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../animation/level-sequence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level Sequence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI & Widget
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UI & Widget
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ui/widget-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Widget 系统概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ui/widget-animation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UI 动画
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    蓝图笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    蓝图笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blueprints/blueprint-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通信与命名
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blueprints/reusable-blueprints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    可复用蓝图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统模块
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    系统模块
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/interaction-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    交互系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/ai-dialog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 对话系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/task-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../systems/level-streaming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关卡流式加载
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    资源规范
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    资源规范
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assets/models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型资源
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第三方插件
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    第三方插件
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/third-party/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    插件说明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    设计系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#一先诊断为什么归纳不出来" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、先诊断：为什么归纳不出来
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#二三个工具" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、三个工具
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、三个工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#工具-1--正交切分六个维度" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具 1 · 正交切分（六个维度）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工具-2--粒度尺判断一条该不该独立成条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具 2 · 粒度尺（判断一条该不该独立成条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#工具-3--漏项矩阵三个必扫矩阵" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        工具 3 · 漏项矩阵（三个必扫矩阵）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#三清单9-模块--137-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、清单（9 模块 · 137 条）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、清单（9 模块 · 137 条）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#b0--本体蓝图到底是什么8-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B0 · 本体：蓝图到底是什么（8 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b1--形态蓝图以哪些资产存在11-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B1 · 形态：蓝图以哪些资产存在（11 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b2--语法写蓝图时的最小单元30-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B2 · 语法：写蓝图时的最小单元（30 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b3--结构运行时构成20-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B3 · 结构：运行时构成（20 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b4--协作蓝图之间怎么说话14-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B4 · 协作：蓝图之间怎么说话（14 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b5--时间执行顺序与生命周期16-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B5 · 时间：执行顺序与生命周期（16 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b6--数据值怎么存怎么配14-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B6 · 数据：值怎么存、怎么配（14 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b7--工程调试性能协作16-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B7 · 工程：调试、性能、协作（16 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b8--边界蓝图与-c与工具链8-条" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B8 · 边界：蓝图与 C++、与工具链（8 条）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四从知识到项目三条串联线" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、从知识到项目：三条串联线
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、从知识到项目：三条串联线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#线-1--一次调用的数据流讲怎么动" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线 1 · 一次调用的数据流（讲「怎么动」）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#线-2--一个对象的生命周期讲活多久谁先谁后" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线 2 · 一个对象的生命周期（讲「活多久、谁先谁后」）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#线-3--一次改动的传播链讲为什么不能随便改" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线 3 · 一次改动的传播链（讲「为什么不能随便改」）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#三条线的收口" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三条线的收口
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#五条目卡模板写正文用比六段式更轻" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、条目卡模板（写正文用，比六段式更轻）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#六你的动作清单今天-30-分钟能做完" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、你的动作清单（今天 30 分钟能做完）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="蓝图知识点总表">蓝图知识点总表<a class="headerlink" href="#蓝图知识点总表" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>137 条，9 个模块。这份表只负责「不重不漏地列出来」——正文由你自己写。</p>
+</blockquote>
+<p><strong>状态</strong>：草稿　<strong>最后核对</strong>：2026-11-20　<strong>适用版本</strong>：UE 5.7.4</p>
+<h2 id="一先诊断为什么归纳不出来">一、先诊断：为什么归纳不出来<a class="headerlink" href="#一先诊断为什么归纳不出来" title="Permanent link">&para;</a></h2>
+<p>不是你想不出来，是<strong>方法用错了</strong>。三个典型症状，对号入座：</p>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>你实际在做的事</th>
+<th>为什么必然失败</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>想到哪写到哪，写了一堆又觉得漏了</td>
+<td>按「记忆顺序」归纳</td>
+<td>记忆是无序的，永远无法证明「写完了」</td>
+</tr>
+<tr>
+<td>每个概念都写得很长，写三条就累</td>
+<td>粒度失控</td>
+<td>「蓝图通信」和「Branch 节点」被放在同一层，一个要 3000 字，一个只要 3 行</td>
+</tr>
+<tr>
+<td>抄了一遍教程目录，还是不会用</td>
+<td>借别人的切法</td>
+<td>教程按「功能」切（变量/函数/流程），你要按「接手项目」切（对象/通信/生命周期），切法不匹配，学了也串不起来</td>
+</tr>
+</tbody>
+</table>
+<p><strong>解法只有一句</strong>：不要凭记忆列，用<strong>维度矩阵扫</strong>。矩阵扫出来的空格，就是你的漏项。</p>
+<h2 id="二三个工具">二、三个工具<a class="headerlink" href="#二三个工具" title="Permanent link">&para;</a></h2>
+<h3 id="工具-1--正交切分六个维度">工具 1 · 正交切分（六个维度）<a class="headerlink" href="#工具-1--正交切分六个维度" title="Permanent link">&para;</a></h3>
+<p>任何「一套技术」都能被六个正交维度切开。蓝图对应的六个维度：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>问的问题</th>
+<th>落到蓝图是什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>本体</strong></td>
+<td>它是什么？编译成什么？</td>
+<td>蓝图是可视化脚本 → 编译成字节码 → 生成 GeneratedClass 与 CDO</td>
+</tr>
+<tr>
+<td><strong>形态</strong></td>
+<td>它以哪些资产形式存在？</td>
+<td>Blueprint Class / Interface / Macro Library / Function Library / Enum / Struct / DataTable / Widget / AnimBP / LevelBP</td>
+</tr>
+<tr>
+<td><strong>语法</strong></td>
+<td>写它的时候有哪些语法单元？</td>
+<td>变量 / 函数 / 宏 / 事件 / 节点 / 委托 / 注释</td>
+</tr>
+<tr>
+<td><strong>结构</strong></td>
+<td>它在运行时构成什么？</td>
+<td>Actor / Component / 层级 / 碰撞 / Transform</td>
+</tr>
+<tr>
+<td><strong>时间</strong></td>
+<td>它什么时候执行？活多久？</td>
+<td>编译 → 构造 → BeginPlay → Tick → EndPlay → 销毁；换关</td>
+</tr>
+<tr>
+<td><strong>协作</strong></td>
+<td>它怎么和别人说话？怎么被调试？</td>
+<td>引用 / Cast / 接口 / 委托 / 子系统；断点 / 日志 / Stat</td>
+</tr>
+</tbody>
+</table>
+<p><strong>校验法</strong>：六个维度里，每个维度都必须能回答「这个维度上有哪些条目」。哪个维度你答不满，就是那块没学透，不是「不知道写什么」。</p>
+<h3 id="工具-2--粒度尺判断一条该不该独立成条">工具 2 · 粒度尺（判断一条该不该独立成条）<a class="headerlink" href="#工具-2--粒度尺判断一条该不该独立成条" title="Permanent link">&para;</a></h3>
+<p>一条知识点必须同时满足：</p>
+<ol>
+<li><strong>15 分钟</strong>能讲清并验证（讲不清＝该拆；3 分钟讲完＝该并到上一条）</li>
+<li><strong>能出一道自测题</strong>（出不了题＝这条没有可检验的内核，是空话）</li>
+<li><strong>在项目里能找到锚点</strong>，或者能明确说「本项目不用，因为___」</li>
+</ol>
+<p>用这把尺子量，「蓝图通信」太大（要拆成 5 条），「Branch 节点怎么连」太小（并进「流程控制节点」）。</p>
+<h3 id="工具-3--漏项矩阵三个必扫矩阵">工具 3 · 漏项矩阵（三个必扫矩阵）<a class="headerlink" href="#工具-3--漏项矩阵三个必扫矩阵" title="Permanent link">&para;</a></h3>
+<p><strong>矩阵 A · 资产类型 × 四态</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>创建</th>
+<th>编辑</th>
+<th>被引用</th>
+<th>删除/迁移</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Blueprint Class</td>
+<td>新建蓝图选父类</td>
+<td>事件图/组件/默认值</td>
+<td>Cast/引用/生成</td>
+<td>引用查看器</td>
+</tr>
+<tr>
+<td>Blueprint Interface</td>
+<td>新建接口</td>
+<td>只声明函数</td>
+<td>实现/消息</td>
+<td>实现方全改</td>
+</tr>
+<tr>
+<td>DataTable</td>
+<td>导入 CSV / 手填</td>
+<td>行结构来自 Struct</td>
+<td>按 RowName 查</td>
+<td>行被引用会断</td>
+</tr>
+<tr>
+<td>Widget Blueprint</td>
+<td>新建控件</td>
+<td>层级/绑定/动画</td>
+<td>Create Widget</td>
+<td>父控件删了会崩</td>
+</tr>
+</tbody>
+</table>
+<p>扫这张表，你会发现「删除一个 DataTable 行会断什么」这种问题，光看教程永远想不到。</p>
+<p><strong>矩阵 B · 语法单元 × 四问</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>怎么声明</th>
+<th>怎么赋值/调用</th>
+<th>谁来触发</th>
+<th>怎么调试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量</td>
+<td>左侧面板</td>
+<td>Set 节点</td>
+<td>任何图</td>
+<td>观察值</td>
+</tr>
+<tr>
+<td>函数</td>
+<td>函数图</td>
+<td>Call 节点</td>
+<td>任何图</td>
+<td>断点进栈</td>
+</tr>
+<tr>
+<td>宏</td>
+<td>宏图</td>
+<td>宏节点</td>
+<td>任何图</td>
+<td>只能断外面</td>
+</tr>
+<tr>
+<td>事件</td>
+<td>事件节点</td>
+<td>——</td>
+<td>引擎/自定义</td>
+<td>断点</td>
+</tr>
+<tr>
+<td>委托</td>
+<td>Dispatcher</td>
+<td>Bind / Call</td>
+<td>广播方</td>
+<td>断点看绑定数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>矩阵 C · 协作方式 × 三评</strong></p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>优点</th>
+<th>代价</th>
+<th>失败模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接引用</td>
+<td>最快</td>
+<td>强耦合</td>
+<td>引用为空 → 静默失败</td>
+</tr>
+<tr>
+<td>Cast</td>
+<td>类型安全</td>
+<td>必须知道目标类</td>
+<td>Cast 失败 → 什么都不发生，不报错</td>
+</tr>
+<tr>
+<td>接口</td>
+<td>解耦</td>
+<td>调试链路长</td>
+<td>忘了实现 → 消息被吞</td>
+</tr>
+<tr>
+<td>Event Dispatcher</td>
+<td>一对多</td>
+<td>生命周期要管</td>
+<td>对象销毁后仍绑定 → 崩溃</td>
+</tr>
+<tr>
+<td>子系统</td>
+<td>全局可达</td>
+<td>隐蔽依赖</td>
+<td>到处取，谁改了什么说不清</td>
+</tr>
+</tbody>
+</table>
+<p>这三个矩阵扫完，你的清单就<strong>在结构上</strong>完备了。</p>
+<h2 id="三清单9-模块--137-条">三、清单（9 模块 · 137 条）<a class="headerlink" href="#三清单9-模块--137-条" title="Permanent link">&para;</a></h2>
+<p>标注：★ 必写　○ 建议　△ 可略（本项目用不到就一句话带过）
+「项目锚点」= 能立刻打开看到的东西，写正文时当例子用。</p>
+<h3 id="b0--本体蓝图到底是什么8-条">B0 · 本体：蓝图到底是什么（8 条）<a class="headerlink" href="#b0--本体蓝图到底是什么8-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B0-01</td>
+<td>蓝图的本质</td>
+<td>可视化脚本，编译成字节码在 VM 上跑，不是解释执行</td>
+<td>全项目 131 个 BP</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B0-02</td>
+<td>Blueprint Class</td>
+<td>由父类派生的可实例化模板</td>
+<td><code>BP_ThirdPersonCharacter</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B0-03</td>
+<td>类与实例</td>
+<td>关卡里摆的是实例，只存被覆盖的属性值</td>
+<td><code>Start.umap</code> 里的 50 个交互点</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B0-04</td>
+<td>编译产物</td>
+<td>GeneratedClass + CDO（类默认对象）</td>
+<td>Class Defaults 面板</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B0-05</td>
+<td>CDO 是什么</td>
+<td>类默认值住在 CDO 里，不是住在实例里</td>
+<td>改默认值不重启 PIE 也能看到</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B0-06</td>
+<td>蓝图与反射</td>
+<td>蓝图靠 UPROPERTY/UFUNCTION 暴露给编辑器与序列化</td>
+<td>变量面板就是反射</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B0-07</td>
+<td>蓝图做不了什么</td>
+<td>无模板、无指针、无自定义序列化、无编译期泛型</td>
+<td>纯蓝图工程的边界</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B0-08</td>
+<td>Blueprint Nativization</td>
+<td>UE5 已移除，不能再当性能手段</td>
+<td><code>DefaultGame.ini</code> 里的 <code>BlueprintNativizationMethod=Disabled</code> 是遗留项</td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b1--形态蓝图以哪些资产存在11-条">B1 · 形态：蓝图以哪些资产存在（11 条）<a class="headerlink" href="#b1--形态蓝图以哪些资产存在11-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1-01</td>
+<td>Blueprint Class</td>
+<td>逻辑载体</td>
+<td>131 个</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B1-02</td>
+<td>Blueprint Interface</td>
+<td>只声明签名的多态契约</td>
+<td><code>BPI_interact</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B1-03</td>
+<td>Interface 的 Message 调用</td>
+<td>不止「实现」，还能对一组对象广播同名函数</td>
+<td>需现场确认角色侧用法</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B1-04</td>
+<td>Blueprint Macro Library</td>
+<td>可复用的节点子图，无状态、不能断点</td>
+<td>待查有无</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B1-05</td>
+<td>Blueprint Function Library</td>
+<td>无状态静态函数集合</td>
+<td>待查</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B1-06</td>
+<td>User Defined Enum</td>
+<td>有名整数集合</td>
+<td><code>E_PlayMode</code>、<code>E_interacttype</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B1-07</td>
+<td>User Defined Struct</td>
+<td>可嵌套的值类型，是 DataTable 的行结构</td>
+<td><code>S_TaskStep</code>、<code>S_interact_info</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B1-08</td>
+<td>DataTable</td>
+<td>以 Struct 为行类型的数据表</td>
+<td><code>DT_Tasks</code> 75 行</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B1-09</td>
+<td>Data Asset</td>
+<td>单个配置对象，适合带资源引用</td>
+<td>建议用于交互配置改造</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B1-10</td>
+<td>Widget Blueprint</td>
+<td>UMG 控件蓝图</td>
+<td>53 个</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B1-11</td>
+<td>Anim Blueprint</td>
+<td>动画状态机 + 后处理图</td>
+<td><code>ABP_walk</code>、15 个</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B1-12</td>
+<td>Level Blueprint</td>
+<td>关卡专属事件图</td>
+<td>待查（<code>Start</code> 是否用了）</td>
+<td>○</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b2--语法写蓝图时的最小单元30-条">B2 · 语法：写蓝图时的最小单元（30 条）<a class="headerlink" href="#b2--语法写蓝图时的最小单元30-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B2-01</td>
+<td>变量声明</td>
+<td>类型 + 容器 + 默认值三件事</td>
+<td>任选一个 BP</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-02</td>
+<td>变量容器</td>
+<td>Array 有序可重复 / Set 无序唯一 / Map 键值</td>
+<td><code>Child15</code> 的多 Mesh 数组</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-03</td>
+<td>Instance Editable</td>
+<td>让每个关卡实例能各自调参</td>
+<td>50 个交互点的差异值</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-04</td>
+<td>Expose on Spawn</td>
+<td>SpawnActor 时能传初值</td>
+<td>运行时生成的物体</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-05</td>
+<td>变量可见性与私有</td>
+<td>私有变量不出现在外部图</td>
+<td>管理器内部状态</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-06</td>
+<td>Config 变量</td>
+<td>变量值从 ini 读</td>
+<td>待查</td>
+<td>△</td>
+</tr>
+<tr>
+<td>B2-07</td>
+<td>Transient 变量</td>
+<td>不参与保存/序列化</td>
+<td>缓存类变量</td>
+<td>△</td>
+</tr>
+<tr>
+<td>B2-08</td>
+<td>事件节点</td>
+<td>引擎回调的入口，一个图可以有多个</td>
+<td><code>Event BeginPlay</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-09</td>
+<td>自定义事件</td>
+<td>可被外部调用、可带参数、可复制</td>
+<td>管理器对外接口</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-10</td>
+<td>函数图</td>
+<td>有返回值、有局部变量、可设纯函数</td>
+<td>交互判定函数</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-11</td>
+<td>纯函数</td>
+<td>无执行引脚、不能有副作用</td>
+<td>取值类逻辑</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-12</td>
+<td>函数参数传递</td>
+<td>值 vs 引用（大 Struct 用引用避免拷贝）</td>
+<td>传 <code>S_TaskStep</code> 时</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-13</td>
+<td>宏</td>
+<td>内联展开，不能断点、不能用局部变量面板</td>
+<td>待查</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-14</td>
+<td>折叠图 / 注释框</td>
+<td>组织可读性，不改变逻辑</td>
+<td>复杂事件图</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-15</td>
+<td>流程控制</td>
+<td>Branch / Sequence / DoOnce / Gate / MultiGate</td>
+<td>交互类型分支</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-16</td>
+<td>循环</td>
+<td>ForLoop / ForEach / While，注意不能跨帧</td>
+<td>遍历数组</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-17</td>
+<td>Cast 节点</td>
+<td>运行时类型检查 + 强转，失败静默</td>
+<td>项目里的存量 Cast</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-18</td>
+<td>接口消息节点</td>
+<td>不需要知道具体类就能调用</td>
+<td><code>BPI_interact</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-19</td>
+<td>延迟（Delay）</td>
+<td>挂在世界时间线上，对象销毁会断</td>
+<td>提示渐隐</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-20</td>
+<td>Timeline 组件</td>
+<td>曲线驱动的时间轴，可循环/反向</td>
+<td><code>BP_DOORs</code> 开门</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-21</td>
+<td>Set Timer</td>
+<td>定时器，可重复，注意句柄清理</td>
+<td>检测节流</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-22</td>
+<td>字符串操作</td>
+<td>Append/Format/Replace，性能上尽量少拼</td>
+<td>提示文案</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-23</td>
+<td>数学与向量</td>
+<td>Vector/Rotator/Transform 的运算规则</td>
+<td>指引箭头方向</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-24</td>
+<td>数组操作</td>
+<td>Add/Remove/Find/Contains 的复杂度直觉</td>
+<td>任务列表</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-25</td>
+<td>类型转换与合法性</td>
+<td>IsValid / 判空，避免空引用崩溃</td>
+<td>引用 UI 前</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-26</td>
+<td>断点与观察值</td>
+<td>蓝图调试器的三个面板</td>
+<td>任一 BP</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-27</td>
+<td>蓝图调试对象</td>
+<td>Debug Object 指定看哪个实例</td>
+<td>50 个同类实例时</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B2-28</td>
+<td>打印与日志</td>
+<td>Print String 会打包保留？用 Log 更好</td>
+<td>调试期</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-29</td>
+<td>图之间的跳转</td>
+<td>双击节点进函数，Alt+拖拽复制</td>
+<td>日常</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B2-30</td>
+<td>命名与注释规范</td>
+<td>变量名带类型前缀、函数动词开头</td>
+<td>项目现状（混乱）</td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b3--结构运行时构成20-条">B3 · 结构：运行时构成（20 条）<a class="headerlink" href="#b3--结构运行时构成20-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B3-01</td>
+<td>Actor</td>
+<td>唯一能被放进 World 且带 Transform 的对象</td>
+<td>376 个</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-02</td>
+<td>Pawn</td>
+<td>能被 Controller 占有的 Actor</td>
+<td>角色</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-03</td>
+<td>Character</td>
+<td>Pawn + 胶囊 + CharacterMovement</td>
+<td><code>BP_ThirdPersonCharacter</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-04</td>
+<td>Controller</td>
+<td>玩家意志的持久代表</td>
+<td><code>BP_playercontroller</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-05</td>
+<td>Component 三层</td>
+<td>UActorComponent（纯逻辑）/ USceneComponent（+Transform）/ UPrimitiveComponent（+几何）</td>
+<td>交互点组件树</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-06</td>
+<td>默认子对象</td>
+<td>在蓝图里直接添加的组件，每个实例都有一份</td>
+<td>组件树</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-07</td>
+<td>运行时 AddComponent</td>
+<td>动态创建，注意开销与销毁</td>
+<td>待查</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B3-08</td>
+<td>Component 查找</td>
+<td>GetComponentByClass / GetComponents</td>
+<td>拿到 Mesh/Widget</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-09</td>
+<td>Transform 层级</td>
+<td>子组件坐标相对父级，Attach 规则决定继承</td>
+<td>复合物体</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-10</td>
+<td>Billboard 组件</td>
+<td>永远面向摄像机的图标，编辑器/提示常用</td>
+<td>交互点两个 Billboard</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-11</td>
+<td>Widget 组件</td>
+<td>把 UMG 渲染到 3D 世界</td>
+<td>「按 E」提示牌</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-12</td>
+<td>StaticMesh 组件</td>
+<td>静态网格渲染体</td>
+<td>246 个 StaticMeshActor</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-13</td>
+<td>SkeletalMesh 组件</td>
+<td>骨骼网格，带动画</td>
+<td><code>SKM_niezi2</code></td>
+<td>○</td>
+</tr>
+<tr>
+<td>B3-14</td>
+<td>碰撞通道与 Preset</td>
+<td>对象类型 × 响应矩阵</td>
+<td><code>interact</code> 自定义通道</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-15</td>
+<td>Overlap 与 Hit</td>
+<td>只报重叠 vs 带阻挡与冲量</td>
+<td>器材拾取</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-16</td>
+<td>Trace 查询</td>
+<td>Line/Sphere/Capsule，可多通道</td>
+<td>视线检测</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B3-17</td>
+<td>Spawn 与 Deferred Spawn</td>
+<td>先生成不初始化，设完参数再完成生成</td>
+<td>需要传参生成时</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B3-18</td>
+<td>Attachment</td>
+<td>吸附到插槽，注意缩放继承</td>
+<td>手持物体</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B3-19</td>
+<td>Actor Tags 与 Outliner 文件夹</td>
+<td>批量查找与组织</td>
+<td>场景分组</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B3-20</td>
+<td>Tick 与 TickGroup</td>
+<td>每帧执行；能关就关，能用 Timer 就别 Tick</td>
+<td>单例管理器</td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b4--协作蓝图之间怎么说话14-条">B4 · 协作：蓝图之间怎么说话（14 条）<a class="headerlink" href="#b4--协作蓝图之间怎么说话14-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B4-01</td>
+<td>直接引用</td>
+<td>变量指向另一个实例，最快也最脆</td>
+<td>UI 引用管理器</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-02</td>
+<td>硬引用 vs 软引用</td>
+<td>硬引用会把对方一起加载；软引用按需加载</td>
+<td>建议改配置表时用软引用</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-03</td>
+<td>Cast 的代价</td>
+<td>一次类型查询 + 强转；大量 Cast 是坏味道</td>
+<td>存量</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-04</td>
+<td>接口分发</td>
+<td>调用方只认契约</td>
+<td><code>BPI_interact</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-05</td>
+<td>Does Implement Interface</td>
+<td>调之前先问「你会不会」</td>
+<td>角色侧</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-06</td>
+<td>Event Dispatcher</td>
+<td>一对多广播，蓝图版多播委托</td>
+<td>任务面板刷新</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-07</td>
+<td>Dispatcher 的生命周期</td>
+<td>绑定不解会留悬空引用</td>
+<td>换关时</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-08</td>
+<td>组件与 Owner</td>
+<td>组件通过 GetOwner 反查，避免反向引用</td>
+<td>交互点内部</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B4-09</td>
+<td>Level Blueprint 通信</td>
+<td>关卡蓝图能拿到关卡里所有 Actor，但难维护</td>
+<td>待查</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B4-10</td>
+<td>GameInstance 中转</td>
+<td>跨关卡唯一可靠的通道</td>
+<td>模式/成绩</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-11</td>
+<td>子系统</td>
+<td>不摆 Actor 的全局服务</td>
+<td>可选改造</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B4-12</td>
+<td>单例管理器的代价</td>
+<td>关卡里摆一个 Actor 当全局，换关就没了</td>
+<td><code>BP_TaskManager1</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-13</td>
+<td>UI 与逻辑解耦三法</td>
+<td>Cast / 委托 / 中间层，各自的失败模式</td>
+<td>全套 UI</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B4-14</td>
+<td>事件驱动 vs 轮询</td>
+<td>谁该通知谁，谁该每帧查</td>
+<td>任务推进</td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b5--时间执行顺序与生命周期16-条">B5 · 时间：执行顺序与生命周期（16 条）<a class="headerlink" href="#b5--时间执行顺序与生命周期16-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B5-01</td>
+<td>编译期</td>
+<td>蓝图编译只查语法与类型，不查运行时</td>
+<td>保存时编译</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-02</td>
+<td>Construction Script</td>
+<td>编辑器里与每次实例变更都会跑，不是运行时</td>
+<td>组件初始化</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-03</td>
+<td>OnConstruction</td>
+<td>构造脚本的 C++ 侧回调时机</td>
+<td>同上</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B5-04</td>
+<td>BeginPlay</td>
+<td>进入游戏世界时一次</td>
+<td>所有 BP</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-05</td>
+<td>初始化顺序</td>
+<td>GameMode → PC → Pawn → Actor → Component</td>
+<td>启动链路</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-06</td>
+<td>Possess 顺序</td>
+<td>占有发生在 Pawn 生成之后，此时 HUD 可能还没好</td>
+<td>角色初始化</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-07</td>
+<td>Tick 顺序</td>
+<td>TickGroup + 同组内不保证顺序</td>
+<td>依赖顺序的逻辑要显式排</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-08</td>
+<td>EndPlay 的三种原因</td>
+<td>销毁 / 关卡卸载 / 退出</td>
+<td>清理定时器</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-09</td>
+<td>换关时谁被销毁</td>
+<td>除 GameInstance 外基本全清</td>
+<td>状态放错层的根源</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-10</td>
+<td>PIE 与打包的差异</td>
+<td>路径、Cook、时序、输入都可能不同</td>
+<td>「编辑器好好的」类 bug</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-11</td>
+<td>延迟/Delay 与对象生命周期</td>
+<td>对象销毁后 Delay 不回调，Timer 要手动清</td>
+<td>提示渐隐</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-12</td>
+<td>关卡卸载时的 Actor 引用</td>
+<td>残留引用会指向已销毁对象</td>
+<td>换图崩溃</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-13</td>
+<td>流式加载的时序</td>
+<td>子关卡加载完成事件，不是立刻可用</td>
+<td><code>JiaZai_ui</code></td>
+<td>○</td>
+</tr>
+<tr>
+<td>B5-14</td>
+<td>Sequencer 播放与回调</td>
+<td>Event Track 在指定帧触发</td>
+<td>79 个 LS</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B5-15</td>
+<td>帧率无关写法</td>
+<td>用 DeltaSeconds，别假设 60fps</td>
+<td>移动/动画</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B5-16</td>
+<td>暂停与时间膨胀</td>
+<td>会影响 Delay/Timeline/Tick</td>
+<td>菜单暂停</td>
+<td>○</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b6--数据值怎么存怎么配14-条">B6 · 数据：值怎么存、怎么配（14 条）<a class="headerlink" href="#b6--数据值怎么存怎么配14-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B6-01</td>
+<td>Struct 的值语义</td>
+<td>赋值是拷贝，改副本不影响原件</td>
+<td><code>S_TaskStep</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B6-02</td>
+<td>Struct 嵌套</td>
+<td>可以嵌套，但别超过两层</td>
+<td><code>Message_Struct</code></td>
+<td>○</td>
+</tr>
+<tr>
+<td>B6-03</td>
+<td>Enum 的底层与显示名</td>
+<td>存整数，改名会断序列化</td>
+<td><code>E_PlayMode</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B6-04</td>
+<td>DataTable 行结构</td>
+<td>行类型必须是 Struct，RowName 是键</td>
+<td><code>DT_Tasks</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B6-05</td>
+<td>CSV / JSON 导入</td>
+<td>表头必须与字段名一致</td>
+<td>若有策划表</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B6-06</td>
+<td>DataTable 的查找代价</td>
+<td>按 RowName 查是哈希，遍历是线性</td>
+<td>75 行不大</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B6-07</td>
+<td>Data Asset</td>
+<td>单条配置 + 资源引用</td>
+<td>建议用于交互配置</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B6-08</td>
+<td>SaveGame</td>
+<td>只存数据，不存对象引用</td>
+<td><code>Saved/SaveGames/userdata.sav</code></td>
+<td>○</td>
+</tr>
+<tr>
+<td>B6-09</td>
+<td>GameInstance 状态</td>
+<td>跨关卡的唯一内存</td>
+<td>模式/成绩</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B6-10</td>
+<td>ini 配置与蓝图</td>
+<td>蓝图能读 ini 变量？多数靠默认值</td>
+<td><code>Config/*.ini</code></td>
+<td>○</td>
+</tr>
+<tr>
+<td>B6-11</td>
+<td>富文本样式表</td>
+<td>RichTextStyleRow 定义字体/颜色</td>
+<td><code>UI/UMG/zi_ti</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B6-12</td>
+<td>富文本图片行</td>
+<td>RichImageRow + 自定义装饰器实现图文混排</td>
+<td><code>picture</code> + <code>NewRichTextBlockDecorator</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B6-13</td>
+<td>本地化</td>
+<td>FText 与 String 的区别，为什么本项目只 stage en</td>
+<td><code>CulturesToStage=en</code></td>
+<td>○</td>
+</tr>
+<tr>
+<td>B6-14</td>
+<td>数据与表现的分离</td>
+<td>表驱动 vs 硬编码，改一个数值要改几处</td>
+<td>交互点文案</td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b7--工程调试性能协作16-条">B7 · 工程：调试、性能、协作（16 条）<a class="headerlink" href="#b7--工程调试性能协作16-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B7-01</td>
+<td>蓝图断点</td>
+<td>断在节点上，看执行流与变量</td>
+<td>日常</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-02</td>
+<td>观察值</td>
+<td>Watch this value，不打断执行</td>
+<td>追一个变量</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-03</td>
+<td>调用栈</td>
+<td>看是谁调进来的</td>
+<td>多层 Cast 时</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-04</td>
+<td>蓝图调试对象</td>
+<td>同类的 50 个实例里指定看哪个</td>
+<td>交互点</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-05</td>
+<td>Log 与 Print</td>
+<td>打包后能不能看到</td>
+<td>调试</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B7-06</td>
+<td>Stat 命令</td>
+<td><code>stat unit</code> 四项定位归属</td>
+<td>性能</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-07</td>
+<td>蓝图性能热点</td>
+<td>Tick、Cast、GetAllActorsOfClass、字符串拼接</td>
+<td>单例管理器</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-08</td>
+<td>引用查看器</td>
+<td>改/删之前查谁在用</td>
+<td>删 50 个交互点前必做</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-09</td>
+<td>蓝图无法 diff</td>
+<td><code>.uasset</code> 是二进制，只能靠截图/注释/提交说明</td>
+<td>团队协作</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-10</td>
+<td>资产命名规范</td>
+<td>前缀 + 语义 + 无空格无中文</td>
+<td>项目现状</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-11</td>
+<td>注释与文档</td>
+<td>图内注释 + 外部页面</td>
+<td>本项目站点</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-12</td>
+<td>蓝图与版本控制</td>
+<td>二进制冲突只能选一边，靠分支隔离</td>
+<td><code>Main_4.10(最终版)</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B7-13</td>
+<td>热重载与重启</td>
+<td>改结构要重启编辑器，改默认值不用</td>
+<td>日常</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B7-14</td>
+<td>蓝图与插件</td>
+<td>插件提供的蓝图节点与资产</td>
+<td>VaRest/EasyCsv/CommonUI</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B7-15</td>
+<td>蓝图迁移</td>
+<td>Migrate 会把依赖一起搬，注意目标路径</td>
+<td>复用交互点时</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B7-16</td>
+<td>静态分析与资产审计</td>
+<td>AssetRegistry 能批量查什么</td>
+<td><code>Saved/ue_audit</code></td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<h3 id="b8--边界蓝图与-c与工具链8-条">B8 · 边界：蓝图与 C++、与工具链（8 条）<a class="headerlink" href="#b8--边界蓝图与-c与工具链8-条" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>知识点</th>
+<th>一句话要义</th>
+<th>项目锚点</th>
+<th>级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B8-01</td>
+<td>纯蓝图项目的上限</td>
+<td>无编译期检查、无自定义类型、性能天花板</td>
+<td>全项目</td>
+<td>★</td>
+</tr>
+<tr>
+<td>B8-02</td>
+<td>C++ 基类 + 蓝图子类</td>
+<td>业界主流做法，本项目没用</td>
+<td>—</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B8-03</td>
+<td>BlueprintImplementableEvent / NativeEvent</td>
+<td>C++ 里留钩子给蓝图</td>
+<td>本项目无</td>
+<td>△</td>
+</tr>
+<tr>
+<td>B8-04</td>
+<td>蓝图与 Cook</td>
+<td>只被蓝图软引用的资产可能不被打包</td>
+<td><code>bCookAll=False</code></td>
+<td>★</td>
+</tr>
+<tr>
+<td>B8-05</td>
+<td>蓝图与 RemoteControl</td>
+<td>通过 HTTP 读写蓝图属性</td>
+<td>端口 30010（只接受 PUT）</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B8-06</td>
+<td>蓝图与 Python</td>
+<td>批量改资产、批量导出</td>
+<td><code>Saved/opt</code> 30 个脚本</td>
+<td>○</td>
+</tr>
+<tr>
+<td>B8-07</td>
+<td>蓝图与命令行</td>
+<td><code>-run=</code> 类任务的限制（Null RHI）</td>
+<td>不适合截图</td>
+<td>△</td>
+</tr>
+<tr>
+<td>B8-08</td>
+<td>什么该从蓝图搬走</td>
+<td>高频逻辑、可复用算法、需要测试的部分</td>
+<td>重构判断</td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="四从知识到项目三条串联线">四、从知识到项目：三条串联线<a class="headerlink" href="#四从知识到项目三条串联线" title="Permanent link">&para;</a></h2>
+<p>知识点列完只是「散装」。串联靠三条线，每条线最后都能自然过渡到项目讲解：</p>
+<h3 id="线-1--一次调用的数据流讲怎么动">线 1 · 一次调用的数据流（讲「怎么动」）<a class="headerlink" href="#线-1--一次调用的数据流讲怎么动" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>输入（玩家按键）
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  → 意图（Enhanced Input / 旧 Axis）
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  → 入口（Controller 还是 Character 接收）
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  → 判定（Trace / Overlap / 距离）
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  → 分发（Cast / 接口 / 委托）
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  → 处理（改自身状态 / 播动画 / 改数据）
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  → 反馈（UI / 音效 / 特效）
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>  → 持久化（GameInstance / SaveGame / DataTable 记录）
+</code></pre></div>
+<p>对应知识点：B2-17/18、B3-15/16、B4-01~07、B6-09。</p>
+<p><strong>讲项目时</strong>：拿「按 E 拿镊子」走一遍这条线，每个箭头停一下，说清「这一步由哪个知识点负责、代码在哪」。</p>
+<h3 id="线-2--一个对象的生命周期讲活多久谁先谁后">线 2 · 一个对象的生命周期（讲「活多久、谁先谁后」）<a class="headerlink" href="#线-2--一个对象的生命周期讲活多久谁先谁后" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>类定义（CDO：默认值）
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  → 实例化（关卡摆放 / Spawn）
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  → 构造脚本（编辑器期）
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  → BeginPlay（进世界）
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  → Tick / 事件驱动（运行期）
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  → EndPlay（销毁 / 换关 / 退出）
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  → 引用清理（定时器、委托、缓存）
+</code></pre></div>
+<p>对应知识点：B0-03/05、B3-05/06、B5-01~12。</p>
+<p><strong>讲项目时</strong>：拿 <code>BP_TaskManager1</code> 走一遍，重点讲「换关时它没了，所以状态必须放 GameInstance」——这是理解框架五件套最快的一条路。</p>
+<h3 id="线-3--一次改动的传播链讲为什么不能随便改">线 3 · 一次改动的传播链（讲「为什么不能随便改」）<a class="headerlink" href="#线-3--一次改动的传播链讲为什么不能随便改" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>改一个类（B0-02）
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  → 影响所有实例的未覆盖默认值（B0-03）
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  → 影响所有 Cast 到它的地方（B4-03）
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  → 影响所有引用它的资产（B7-08）
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  → 影响 Cook 是否包含它（B8-04）
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  → 影响打包体积与加载时间（B8-01）
+</code></pre></div>
+<p>对应知识点：B0-02/03、B4-03、B7-08/09/12、B8-04。</p>
+<p><strong>讲项目时</strong>：拿「把 50 个交互点合并成 1 个模板」当案例——为什么必须分批、为什么先 Reference Viewer、为什么每批要回归。</p>
+<h3 id="三条线的收口">三条线的收口<a class="headerlink" href="#三条线的收口" title="Permanent link">&para;</a></h3>
+<p>写项目逻辑时，每一页都问一遍：<strong>这页讲的是哪条线的一段？</strong>
+- 讲不清属于哪条线 → 这页是「知识点堆砌」，不是「项目逻辑」
+- 三条线都走通了 → 你已经能对着白板讲完整个项目</p>
+<h2 id="五条目卡模板写正文用比六段式更轻">五、条目卡模板（写正文用，比六段式更轻）<a class="headerlink" href="#五条目卡模板写正文用比六段式更轻" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gu">### B4-03 Cast 的代价</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="gs">**一句话**</span>：Cast 是运行时类型检查 + 强转，成功才继续，失败静默什么都不发生。
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="gs">**它解决什么问题**</span>：拿到具体类型的引用，才能调它的函数和变量。
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="gs">**关键点**</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">-</span><span class="w"> </span>失败不报错，所以「没反应」类 bug 先怀疑 Cast
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">-</span><span class="w"> </span>目标类改名/删除，Cast 节点会变成错误节点，但引用不会自动断
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">-</span><span class="w"> </span>大量 Cast 出现在同一个图里 = 结构问题，不是写法问题
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="gs">**边界**</span>：Cast 不能跨不相关的类；接口调用不需要 Cast。
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="gs">**关系**</span>：上游是「对象引用」（B4-01），下游是「接口分发」（B4-04）的替代方案。
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="gs">**本项目**</span>：<span class="sb">`BP_ThirdPersonCharacter`</span> 里对交互点的处理（★ 待确认是 Cast 还是接口消息）。
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="gs">**常见误解**</span>：「Cast 失败会打印警告」——不会，除非你手动加 IsValid。
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="gs">**自测**</span>：如果 Cast 的目标类被删掉，蓝图会怎样？打包时呢？
+</code></pre></div>
+<h2 id="六你的动作清单今天-30-分钟能做完">六、你的动作清单（今天 30 分钟能做完）<a class="headerlink" href="#六你的动作清单今天-30-分钟能做完" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>别写正文</strong>，先把上面 137 条的「级」列按你的判断改一遍（哪些 ★ 降成 ○），5 分钟</li>
+<li>用矩阵 A/B/C 扫一遍，看有没有你能想到、但清单里没有的条目——<strong>有就补，这是你自己的清单</strong></li>
+<li>每条只填三个格子：<code>本项目有无</code> / <code>我懂不懂（1-3 分）</code> / <code>要不要现在写</code></li>
+<li>只写「3 分以下 × 项目在用」的交集——其余全部暂缓</li>
+<li>一条 15 分钟，写完立刻在项目里打开对应资产看一眼</li>
+</ol>
+<p>写完 20 条左右，你会自然发现「这几条总是一起出现」——那就是你的模块边界，串联线会自己浮出来。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <!-- @license lucide-static v0.545.0 - ISC --> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" > <path d="m5 12 7-7 7 7" /> <path d="M12 19V5" /> </svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+        <script src="../../javascripts/lightbox.js"></script>
+      
+    
+  </body>
+</html>

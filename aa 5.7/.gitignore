@@ -36,3 +36,64 @@ venv/
 
 # 打包发送站点用的临时压缩包，不属于仓库内容
 site.zip
+
+# ===== Chromium/Edge profile 误落项目根（2026-11-21 --user-data-dir 事故）=====
+# 浏览器自动化/agent 若把 user-data-dir 指到项目目录，Edge 会把整套 profile 写进仓库根，
+# 含 Login Data / Network\Cookies / Web Data / History（账号密码、登录态、浏览记录），
+# 一律忽略，避免误提交。
+/Local State
+/Last Browser
+/Last Version
+/First Run
+/FirstLaunchAfterInstallation
+/Variations
+/VariationsSafeSeedV2
+/VariationsRuntimeSeedV2
+/VariationsSeedV2
+/Functional SAN Data
+/Functional SAN Data-wal
+/Ad Blocking/
+/Autofill/
+/AutoLaunchProtocolsComponent/
+/BrowserMetrics/
+/CertificateRevocation/
+/component_crx_cache/
+/Crashpad/
+/DeferredBrowserMetrics/
+/Default/
+/Domain Actions/
+/EADPData Component/
+/Edge*/
+/extensions_crx_cache/
+/FirstPartySetsPreloaded/
+/GPUPersistentCache/
+/GrShaderCache/
+/hyphen-data/
+/MEIPreload/
+/Nurturing/
+/OnDeviceHeadSuggestModel/
+/OriginTrials/
+/PKIMetadata/
+/ProvenanceData*/
+/RecoveryImproved/
+/SafetyTips/
+/ShaderCache/
+/Speech Recognition/
+/Subresource Filter/
+/Trust Protection Lists/
+/TrustTokenKeyCommitments/
+/Typosquatting/
+/Web Notifications Deny List/
+/Well Known Domains/
+/WidevineCdm/
+/WorkspacesNavigationComponent/
+/ZxcvbnData/
+
+# ===== 临时抓包/调试残留（空主干文件名，如 curl -o .bin / 报错重定向到 .txt）=====
+/.bin
+/.txt
+
+# ===== 抓取的音视频素材（bili-kb 等下载缓存）=====
+/_audio/
+/**/_audio/
+
